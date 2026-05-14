@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC CGL Ultimate Study Tracker 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#1c2430;--border:#30363d;
+  --text:#e6edf3;--muted:#7d8590;--accent:#f7c948;--green:#3fb950;
+  --blue:#58a6ff;--purple:#bc8cff;--orange:#ffa657;--red:#f85149;
+  --eng:#e05299;--math:#52c0e0;--rea:#bc8cff;--gk:#f7c948;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#1a0533,#0d1117 50%,#001a33);border-bottom:2px solid var(--accent);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;gap:10px;flex-wrap:wrap}
+.logo{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--accent);letter-spacing:2px;white-space:nowrap}
+.logo span{color:var(--text)}
+.hdr-stats{display:flex;gap:14px;flex-wrap:wrap}
+.hs{text-align:center}
+.hs-n{font-family:'Rajdhani',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent);line-height:1}
+.hs-l{font-size:0.6rem;color:var(--muted);text-transform:uppercase}
+.hdr-btns{display:flex;gap:8px;align-items:center}
+/* SECTION TABS */
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;padding:0 10px}
+.tab{padding:12px 20px;cursor:pointer;border-bottom:3px solid transparent;font-weight:700;font-size:0.85rem;white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:8px}
+.tab:hover{color:var(--accent)}
+.tab.active{border-bottom-color:var(--accent);color:var(--accent)}
+.tab .tpct{font-size:0.65rem;background:var(--surface2);padding:2px 7px;border-radius:99px;color:var(--muted)}
+/* LAYOUT */
+.layout{display:flex;height:calc(100vh - 102px)}
+.sidebar{width:210px;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;flex-shrink:0;padding:10px 0}
+.main{flex:1;overflow-y:auto;padding:18px}
+/* NAV */
+.nav-lbl{padding:6px 12px 2px;font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+.ni{display:flex;align-items:center;gap:8px;padding:8px 14px;cursor:pointer;border-left:3px solid transparent;font-size:0.8rem;font-weight:600;transition:all .15s}
+.ni:hover{background:var(--surface2)}
+.ni.active{background:var(--surface2);border-left-color:var(--accent);color:var(--accent)}
+.ni .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ni .nc{margin-left:auto;font-size:0.62rem;background:var(--border);padding:2px 6px;border-radius:99px;color:var(--muted)}
+.npb{height:3px;background:var(--border);margin:0 14px 4px;border-radius:99px;overflow:hidden}
+.npbf{height:100%;border-radius:99px;transition:width .4s}
+/* BUTTONS */
+.btn{padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'Nunito',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-primary{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn-primary:hover{background:#e5b800;color:#000}
+.btn-red{border-color:var(--red);color:var(--red)}
+.btn-red:hover{background:rgba(248,81,73,.1)}
+.btn-green{border-color:var(--green);color:var(--green)}
+.btn-sm{padding:4px 10px;font-size:0.72rem}
+/* CONTROLS */
+.ctrl{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:160px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 12px;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.82rem;outline:none}
+.search:focus{border-color:var(--accent)}
+.fbtn{padding:5px 11px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:0.72rem;cursor:pointer;transition:all .15s;font-family:'Nunito',sans-serif}
+.fbtn.active{background:var(--surface2);color:var(--accent);border-color:var(--accent)}
+/* CARDS */
+.subj-hdr{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:12px;margin-bottom:16px;position:relative;overflow:hidden}
+.subj-icon{font-size:2rem}
+.subj-title{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700}
+.subj-meta{font-size:0.72rem;color:var(--muted);margin-top:2px}
+.bdg{padding:2px 9px;border-radius:99px;font-size:0.65rem;font-weight:700;text-transform:uppercase}
+.bdg-y{background:rgba(247,201,72,.15);color:var(--accent);border:1px solid rgba(247,201,72,.3)}
+.bdg-g{background:rgba(63,185,80,.15);color:var(--green);border:1px solid rgba(63,185,80,.3)}
+.bdg-r{background:rgba(248,81,73,.15);color:var(--red);border:1px solid rgba(248,81,73,.3)}
+.spw{margin-left:auto;text-align:right;min-width:90px}
+.spct{font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;line-height:1}
+.sbar{height:5px;background:rgba(255,255,255,.1);border-radius:99px;margin-top:5px;overflow:hidden}
+.sbarf{height:100%;border-radius:99px;transition:width .5s}
+/* TOPIC CARDS */
+.tc{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.tc:hover{border-color:var(--muted)}
+.th{display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer}
+.tex{font-size:0.65rem;color:var(--muted);transition:transform .2s}
+.tex.open{transform:rotate(90deg)}
+.tn{font-weight:700;font-size:0.87rem;flex:1}
+.tqb{font-size:0.65rem;background:var(--surface2);padding:2px 7px;border-radius:99px;color:var(--muted)}
+.tmb{width:55px;height:4px;background:var(--border);border-radius:99px;overflow:hidden}
+.tmbf{height:100%;border-radius:99px;transition:width .4s}
+.imp{font-size:0.62rem;padding:2px 6px;border-radius:4px;font-weight:700}
+.imp-High{background:rgba(248,81,73,.2);color:#f85149}
+.imp-Medium{background:rgba(247,166,87,.2);color:#ffa657}
+.imp-Low{background:rgba(63,185,80,.2);color:#3fb950}
+/* SUBTOPICS */
+.sts{padding:0 14px 10px;display:none}
+.sts.open{display:block}
+.sr{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;transition:background .15s}
+.sr:hover{background:var(--surface2)}
+.sr.hl{background:rgba(247,201,72,.08)!important;border-radius:7px}
+.chk{width:17px;height:17px;border-radius:4px;border:2px solid var(--border);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.chk.done{background:var(--green);border-color:var(--green)}
+.chk.done::after{content:'✓';color:#000;font-size:0.65rem;font-weight:900}
+.sn{flex:1;font-size:0.81rem}
+.sn.done{color:var(--muted);text-decoration:line-through}
+.stags{display:flex;gap:3px}
+.tag{font-size:0.58rem;padding:1px 5px;border-radius:3px;font-weight:700}
+.tag-fire{background:rgba(248,81,73,.2);color:#f85149}
+.tag-star{background:rgba(247,201,72,.2);color:var(--accent)}
+.tag-qs{background:rgba(88,166,255,.2);color:var(--blue)}
+.sact{display:flex;gap:4px;flex-shrink:0}
+.ib{width:26px;height:26px;border-radius:5px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.72rem;transition:all .15s;flex-shrink:0}
+.ib:hover{border-color:var(--accent);color:var(--accent)}
+.ib.del{border-color:rgba(248,81,73,.5);color:var(--red);background:rgba(248,81,73,.1)}
+.ib.del:hover{border-color:var(--red);background:rgba(248,81,73,.2)}
+/* SYNC */
+.sync-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;flex-shrink:0}
+.sync-bar{position:fixed;top:0;left:0;right:0;height:2px;background:var(--green);z-index:9999;transform:scaleX(0);transform-origin:left;transition:transform .4s ease;pointer-events:none}
+.sync-bar.syncing{animation:syncpulse 1.2s infinite}
+@keyframes syncpulse{0%{transform:scaleX(0)}50%{transform:scaleX(.6)}100%{transform:scaleX(1)}}
+.sync-bar.done{transform:scaleX(1);transition:transform .3s}
+.google-btn{background:#fff;color:#333;border:1px solid #ddd;border-radius:8px;padding:8px 16px;font-family:Nunito,sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:8px;transition:box-shadow .2s;width:100%}
+.google-btn:hover{box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.sync-info{background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.3);border-radius:8px;padding:10px 12px;font-size:.74rem;color:var(--muted);margin-top:10px}
+.sl{font-size:0.68rem;color:var(--blue);text-decoration:none;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.atb{width:100%;margin-top:5px;padding:8px;border:1px dashed var(--border);background:transparent;border-radius:7px;color:var(--muted);cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.78rem;transition:all .15s;text-align:center}
+.atb:hover{border-color:var(--accent);color:var(--accent);background:var(--surface2)}
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;padding:10px}
+.mo.open{display:flex}
+.md{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;width:480px;max-width:100%;max-height:92vh;overflow-y:auto}
+.md h3{font-family:'Rajdhani',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:14px}
+.md label{font-size:0.75rem;color:var(--muted);display:block;margin-bottom:3px;margin-top:10px}
+.md input,.md select,.md textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:0.83rem;outline:none}
+.md input:focus,.md select:focus,.md textarea:focus{border-color:var(--accent)}
+.mda{display:flex;gap:8px;margin-top:18px;justify-content:flex-end;flex-wrap:wrap}
+/* DASH GRID */
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+.dc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s}
+.dc:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.dc-ico{font-size:2rem;margin-bottom:8px}
+.dc-title{font-weight:800;font-size:1rem;margin-bottom:3px}
+.dc-sub{font-size:0.7rem;color:var(--muted)}
+.dc-pct{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;margin-top:8px;line-height:1}
+.dmb{height:5px;background:var(--border);border-radius:99px;margin-top:7px;overflow:hidden}
+.dmbf{height:100%;border-radius:99px}
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--green);color:var(--green);padding:9px 16px;border-radius:8px;font-size:0.82rem;font-weight:700;z-index:9999;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+/* STAT CARDS */
+.statrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:18px}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.sc-n{font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;line-height:1}
+.sc-l{font-size:0.65rem;color:var(--muted);margin-top:3px;text-transform:uppercase}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:0.79rem}
+.tbl th{background:var(--surface2);padding:9px 11px;text-align:left;font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+.tbl td{padding:9px 11px;border-bottom:1px solid var(--border)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--surface2)}
+/* VOCAB */
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.vword{font-weight:800;font-size:1rem;min-width:130px;color:var(--accent)}
+.vmean{flex:1;font-size:0.83rem;color:var(--text)}
+.vex{font-size:0.72rem;color:var(--muted);margin-top:3px;font-style:italic}
+/* ALARM */
+.alarm-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px}
+.alarm-time{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--accent);min-width:80px}
+.alarm-info{flex:1}
+.alarm-name{font-weight:700;font-size:0.9rem}
+.alarm-sub{font-size:0.72rem;color:var(--muted)}
+.alarm-tog{width:44px;height:24px;border-radius:99px;border:none;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.alarm-tog.on{background:var(--green)}
+.alarm-tog.off{background:var(--border)}
+.alarm-tog::after{content:'';position:absolute;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:left .2s}
+.alarm-tog.on::after{left:23px}
+.alarm-tog.off::after{left:3px}
+/* GRAPH */
+.graph-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+.graph-title{font-weight:700;font-size:0.88rem;margin-bottom:12px}
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:140px;padding-bottom:24px;position:relative}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;height:100%}
+.bar-fill{width:100%;border-radius:4px 4px 0 0;position:absolute;bottom:20px;transition:height .5s}
+.bar-lbl{position:absolute;bottom:0;font-size:0.6rem;color:var(--muted);text-align:center;width:100%}
+.bar-val{position:absolute;font-size:0.58rem;color:var(--accent);text-align:center;width:100%}
+/* PRINT */
+@media print{
+  .tabs,.sidebar,.hdr-btns,.ctrl,.sact,.atb,.btn,.alarm-card{display:none!important}
+  .layout{height:auto!important;flex-direction:column}
+  .main{overflow:visible!important;padding:10px}
+  body{background:#fff!important;color:#000!important}
+  .tc{border:1px solid #ccc!important;break-inside:avoid}
+  .sts{display:block!important}
+  .surface,.surface2{background:#fff!important}
+}
+@media(max-width:700px){.sidebar{display:none}.layout{height:auto;flex-direction:column}.hdr-stats{display:none}}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <div class="logo">SSC <span>CGL</span> 2026</div>
+    <div style="font-size:.6rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Ultimate Study Tracker</div>
+  </div>
+  <div class="hdr-stats">
+    <div class="hs"><div class="hs-n" id="hs-done">0</div><div class="hs-l">Done</div></div>
+    <div class="hs"><div class="hs-n" id="hs-total">0</div><div class="hs-l">Total</div></div>
+    <div class="hs"><div class="hs-n" id="hs-streak">0🔥</div><div class="hs-l">Streak</div></div>
+    <div class="hs"><div class="hs-n" id="hs-pct">0%</div><div class="hs-l">Done</div></div>
+    <div class="hs"><div class="hs-n" id="hs-hrs">0h</div><div class="hs-l">Today</div></div>
+  </div>
+  <div class="hdr-btns">
+    <div id="sync-status-pill" style="display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:99px;padding:4px 10px;cursor:pointer" onclick="openLoginModal()">
+      <span class="sync-dot" id="sync-dot" style="background:var(--muted)"></span>
+      <span id="user-label">Not synced</span>
+    </div>
+    <button class="btn" onclick="openLoginModal()">👤 <span id="user-label2">Login</span></button>
+    <button class="btn" onclick="openAlarmModal()">🔔 Alarms</button>
+    <button class="btn" onclick="window.print()">🖨️ Print</button>
+    <button class="btn btn-red" onclick="confirmDeleteHistory()">🗑 Delete</button>
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main" id="main"></div>
+</div>
+
+<div class="mo" id="modal"><div class="md" id="modal-inner"></div></div>
+<div class="sync-bar" id="sync-bar"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== SECTION DEFINITIONS =====
+const SECTIONS = [
+  {id:'dashboard',label:'Dashboard',icon:'📊',color:'#f7c948',isPage:true},
+  {id:'english',label:'English',icon:'📖',color:'#e05299'},
+  {id:'math',label:'Math',icon:'📐',color:'#52c0e0'},
+  {id:'reasoning',label:'Reasoning',icon:'🧠',color:'#bc8cff'},
+  {id:'gkgs',label:'GK/GS',icon:'🌐',color:'#f7c948'},
+  {id:'vocab',label:'Vocabulary',icon:'📝',color:'#3fb950',isPage:true},
+  {id:'daily',label:'Daily Log',icon:'📅',color:'#58a6ff',isPage:true},
+  {id:'study',label:'Study Timer',icon:'⏱️',color:'#ffa657',isPage:true},
+  {id:'alarms',label:'Alarms',icon:'🔔',color:'#f85149',isPage:true},
+];
+
+// ===== SUBJECT DATA =====
+const SUBJECTS = {
+  english:[
+    {id:'eng_rc',name:'Reading Comprehension',importance:'High',color:'#e05299',subtopics:[
+      {id:'e1',name:'Para Comprehension — Inference & Main Idea',tags:['fire'],qs:10},
+      {id:'e2',name:'Para Comprehension — Vocabulary in Context',tags:['star'],qs:5},
+      {id:'e3',name:'Passage Based Qs — Tone & Attitude',tags:['star'],qs:5},
+    ]},
+    {id:'eng_vocab',name:'Vocabulary',importance:'High',color:'#e05299',subtopics:[
+      {id:'e4',name:'Synonyms & Antonyms',tags:['fire','star'],qs:8},
+      {id:'e5',name:'Idioms & Phrases',tags:['fire'],qs:6},
+      {id:'e6',name:'One Word Substitution',tags:['fire','star'],qs:5},
+      {id:'e7',name:'Homonyms & Confusable Words',tags:['star'],qs:3},
+    ]},
+    {id:'eng_gram',name:'Grammar & Error Detection',importance:'High',color:'#e05299',subtopics:[
+      {id:'e8',name:'Spot the Error — Subject-Verb Agreement',tags:['fire','star'],qs:6},
+      {id:'e9',name:'Fill in the Blanks — Articles, Prepositions',tags:['fire'],qs:5},
+      {id:'e10',name:'Spellings / Detecting Misspelt Words',tags:['star'],qs:3},
+      {id:'e11',name:'Active & Passive Voice',tags:['fire'],qs:4},
+      {id:'e12',name:'Direct & Indirect Speech (Narration)',tags:['fire'],qs:4},
+      {id:'e13',name:'Sentence Improvement',tags:['star'],qs:4},
+      {id:'e14',name:'Tenses — All Forms',tags:['fire'],qs:0},
+      {id:'e15',name:'Clauses — Noun, Adjective, Adverb',tags:[],qs:0},
+    ]},
+    {id:'eng_sent',name:'Sentence & Para Arrangement',importance:'Medium',color:'#e05299',subtopics:[
+      {id:'e16',name:'Shuffling of Sentence Parts (Jumbled Sentences)',tags:['fire'],qs:4},
+      {id:'e17',name:'Para Jumbles — Shuffling of Sentences in Passage',tags:['star'],qs:3},
+      {id:'e18',name:'Cloze Passage',tags:['fire'],qs:5},
+    ]},
+  ],
+  math:[
+    {id:'m_num',name:'Number System & Arithmetic',importance:'High',color:'#52c0e0',subtopics:[
+      {id:'m1',name:'Number System — HCF, LCM, Integers',tags:['fire'],qs:3},
+      {id:'m2',name:'Percentages',tags:['fire','star'],qs:4},
+      {id:'m3',name:'Ratio & Proportion',tags:['fire'],qs:3},
+      {id:'m4',name:'Square Roots & Cube Roots',tags:['star'],qs:2},
+      {id:'m5',name:'Averages',tags:['fire'],qs:3},
+      {id:'m6',name:'Simple & Compound Interest',tags:['fire','star'],qs:3},
+      {id:'m7',name:'Profit, Loss & Discount',tags:['fire','star'],qs:4},
+      {id:'m8',name:'Partnership Business',tags:['star'],qs:2},
+      {id:'m9',name:'Mixture & Alligation',tags:['star'],qs:2},
+      {id:'m10',name:'Time & Distance — Trains, Boats',tags:['fire'],qs:3},
+      {id:'m11',name:'Time & Work — Pipes & Cisterns',tags:['fire'],qs:3},
+    ]},
+    {id:'m_alg',name:'Algebra & Surds',importance:'High',color:'#52c0e0',subtopics:[
+      {id:'m12',name:'Basic Algebraic Identities',tags:['fire'],qs:4},
+      {id:'m13',name:'Elementary Surds — Rationalization',tags:['star'],qs:2},
+      {id:'m14',name:'Linear Equations — Graph Based',tags:[],qs:2},
+      {id:'m15',name:'Quadratic Equations',tags:['star'],qs:2},
+    ]},
+    {id:'m_geo',name:'Geometry',importance:'High',color:'#52c0e0',subtopics:[
+      {id:'m16',name:'Triangles — Properties, Congruence, Similarity',tags:['fire','star'],qs:4},
+      {id:'m17',name:'Circles — Chords, Tangents, Angles',tags:['fire'],qs:3},
+      {id:'m18',name:'Quadrilaterals & Polygons',tags:['star'],qs:2},
+      {id:'m19',name:'Co-ordinate Geometry',tags:[],qs:1},
+    ]},
+    {id:'m_men',name:'Mensuration',importance:'High',color:'#52c0e0',subtopics:[
+      {id:'m20',name:'Area — Triangle, Quadrilateral, Circle',tags:['fire'],qs:2},
+      {id:'m21',name:'Volume & SA — Cylinder, Cone, Sphere',tags:['fire','star'],qs:3},
+      {id:'m22',name:'Right Prism & Pyramid',tags:['star'],qs:2},
+    ]},
+    {id:'m_trig',name:'Trigonometry',importance:'High',color:'#52c0e0',subtopics:[
+      {id:'m23',name:'Trigonometric Ratios & Identities',tags:['fire','star'],qs:4},
+      {id:'m24',name:'Complementary Angles',tags:['star'],qs:2},
+      {id:'m25',name:'Heights & Distances',tags:['fire'],qs:3},
+    ]},
+    {id:'m_stat',name:'Statistics & DI',importance:'Medium',color:'#52c0e0',subtopics:[
+      {id:'m26',name:'Bar Graph & Pie Chart',tags:['fire','star'],qs:5},
+      {id:'m27',name:'Histogram & Frequency Polygon',tags:['star'],qs:2},
+      {id:'m28',name:'Mean, Median, Mode',tags:['fire'],qs:2},
+      {id:'m29',name:'Standard Deviation & Probability',tags:[],qs:1},
+    ]},
+  ],
+  reasoning:[
+    {id:'r_verb',name:'Verbal Reasoning',importance:'High',color:'#bc8cff',subtopics:[
+      {id:'r1',name:'Semantic Analogy — Word Relationships',tags:['fire','star'],qs:3},
+      {id:'r2',name:'Semantic Classification',tags:['star'],qs:2},
+      {id:'r3',name:'Semantic Series — Number/Letter',tags:['fire'],qs:3},
+      {id:'r4',name:'Coding & Decoding',tags:['fire','star'],qs:3},
+      {id:'r5',name:'Word Building & Arrangement',tags:['star'],qs:2},
+      {id:'r6',name:'Statement & Conclusion',tags:['fire'],qs:2},
+      {id:'r7',name:'Syllogistic Reasoning',tags:['fire','star'],qs:2},
+      {id:'r8',name:'Arithmetical Reasoning',tags:['fire'],qs:2},
+      {id:'r9',name:'Critical Thinking & Decision Making',tags:[],qs:1},
+      {id:'r10',name:'Emotional & Social Intelligence',tags:[],qs:1},
+    ]},
+    {id:'r_nonv',name:'Non-Verbal Reasoning',importance:'High',color:'#bc8cff',subtopics:[
+      {id:'r11',name:'Symbolic / Number Analogy',tags:['fire'],qs:2},
+      {id:'r12',name:'Figural Analogy',tags:['fire','star'],qs:2},
+      {id:'r13',name:'Symbolic / Number Classification',tags:['star'],qs:2},
+      {id:'r14',name:'Figural Classification',tags:[],qs:2},
+      {id:'r15',name:'Figural Series',tags:['fire'],qs:2},
+      {id:'r16',name:'Space Orientation & Visualization',tags:['fire','star'],qs:2},
+      {id:'r17',name:'Venn Diagrams',tags:['star'],qs:2},
+      {id:'r18',name:'Drawing Inferences',tags:[],qs:1},
+    ]},
+    {id:'r_puz',name:'Puzzles & Misc',importance:'High',color:'#bc8cff',subtopics:[
+      {id:'r19',name:'Punched Hole — Pattern Folding & Unfolding',tags:['fire','star'],qs:2},
+      {id:'r20',name:'Figural Pattern Folding & Completion',tags:['fire'],qs:2},
+      {id:'r21',name:'Embedded Figures',tags:['star'],qs:2},
+      {id:'r22',name:'Address Matching & Date/City Matching',tags:[],qs:1},
+      {id:'r23',name:'Small/Capital Letters — Number Coding',tags:['star'],qs:1},
+      {id:'r24',name:'Number Series — Missing Number',tags:['fire','star'],qs:2},
+      {id:'r25',name:'Indexing & Classification of Roll Numbers',tags:[],qs:1},
+      {id:'r26',name:'Trends & Numerical Operations',tags:[],qs:1},
+    ]},
+  ],
+  gkgs:[
+    // History
+    {id:'anc',name:'Ancient History',importance:'High',color:'#e05252',pyqQ:38,subtopics:[
+      {id:'s1',name:'Prehistoric Period & Stone Age',tags:['star'],qs:4},
+      {id:'s2',name:'Indus Valley Civilization — Town Planning, Sites, Trade',tags:['fire','star'],qs:6},
+      {id:'s3',name:'Vedic Age — Rigvedic vs Later Vedic, Society',tags:['fire'],qs:5},
+      {id:'s4',name:'Mahajanapadas & Kingdoms',tags:['star'],qs:4},
+      {id:'s5',name:'Mauryan Empire — Ashoka, Arthashastra',tags:['fire'],qs:6},
+      {id:'s6',name:'Post-Mauryan Period — Kushans, Sungas',tags:[],qs:3},
+      {id:'s7',name:'Gupta Empire — Golden Age, Literature & Science',tags:['fire'],qs:5},
+      {id:'s8',name:'South Indian Dynasties — Cholas, Pallavas',tags:[],qs:3},
+      {id:'s9',name:'Buddhism — Four Noble Truths, Councils',tags:['star'],qs:2},
+      {id:'s10',name:'Jainism — Tirthankaras, Mahavira Teachings',tags:[],qs:2},
+      {id:'s11',name:'Sangam Age',tags:[],qs:0},{id:'s12',name:'Foreign Travellers',tags:[],qs:0},
+    ]},
+    {id:'med',name:'Medieval History',importance:'High',color:'#e05252',pyqQ:34,subtopics:[
+      {id:'m_1',name:'Delhi Sultanate — Slave, Khilji Reforms',tags:['fire'],qs:7},
+      {id:'m_2',name:'Mughal Empire — Akbar, Mansabdari System',tags:['fire','star'],qs:10},
+      {id:'m_3',name:'Rajput States',tags:[],qs:4},{id:'m_4',name:'Southern Dynasties',tags:[],qs:3},
+      {id:'m_5',name:'Vijayanagar Empire',tags:[],qs:2},{id:'m_6',name:'Maratha Empire',tags:['star'],qs:3},
+      {id:'m_7',name:'Triparty Struggle (Pratiharas)',tags:[],qs:2},
+      {id:'m_8',name:'Bhakti & Sufi Movement',tags:['star'],qs:0},
+      {id:'m_9',name:'Socio-Religious Reform Movements',tags:[],qs:3},
+    ]},
+    {id:'mod',name:'Modern History 🔥🔥🔥',importance:'High',color:'#e05252',pyqQ:35,subtopics:[
+      {id:'mo1',name:'European Companies in India',tags:['star'],qs:0},
+      {id:'mo2',name:'Battles — Plassey & Buxar',tags:['fire','star'],qs:0},
+      {id:'mo3',name:'British Expansion & Political Policies',tags:['fire'],qs:10},
+      {id:'mo4',name:'Governor Generals & Viceroys',tags:['star'],qs:0},
+      {id:'mo5',name:'Revolt of 1857 & Tribal Movements',tags:['fire','star'],qs:6},
+      {id:'mo6',name:'INC Sessions — Moderates vs Extremists',tags:['star'],qs:0},
+      {id:'mo7',name:'Partition of Bengal & Swadeshi Movement',tags:['star'],qs:0},
+      {id:'mo8',name:'Gandhian Era — NCM, CDM, Quit India',tags:['fire','star'],qs:0},
+      {id:'mo9',name:'Revolutionary Movements',tags:[],qs:3},
+      {id:'mo10',name:'Important Acts — Regulating, Pitt\'s, GoI Acts',tags:['star'],qs:0},
+      {id:'mo11',name:'National Movement 1885–1939',tags:['fire'],qs:7},
+      {id:'mo12',name:'Freedom Struggle & Partition 1939–47',tags:['fire'],qs:6},
+      {id:'mo13',name:'Post-Independence Scenario',tags:[],qs:3},
+    ]},
+    // Geography
+    {id:'phgeo',name:'Physical Geography',importance:'Medium',color:'#52c0e0',pyqQ:28,subtopics:[
+      {id:'pg1',name:'Landforms & Processes',tags:['fire'],qs:12},
+      {id:'pg2',name:'Interior of Earth — Volcanoes, Earthquakes',tags:['fire'],qs:0},
+      {id:'pg3',name:'Atmosphere & Weather',tags:['star'],qs:8},
+      {id:'pg4',name:'Rivers, Coasts & Hydrology',tags:[],qs:6},
+      {id:'pg5',name:'Earth Physics & Gravity',tags:[],qs:3},
+      {id:'pg6',name:'Space & Orbits',tags:[],qs:5},
+      {id:'pg7',name:'Rocks & Minerals',tags:[],qs:0},
+      {id:'pg8',name:'Latitude, Longitude & Time Zones',tags:[],qs:0},
+      {id:'pg9',name:'Climate Change & Environment',tags:['star'],qs:5},
+      {id:'pg10',name:'Satellites & Space Missions',tags:['fire'],qs:4},
+    ]},
+    {id:'indgeo',name:'Indian Geography 🔥🔥',importance:'High',color:'#52c0e0',pyqQ:20,subtopics:[
+      {id:'ig1',name:'Physical Divisions — Himalayan Ranges',tags:['fire'],qs:7},
+      {id:'ig2',name:'Rivers & Tributaries — Ganga, Brahmaputra',tags:['fire','star'],qs:0},
+      {id:'ig3',name:'Dams & Multipurpose Projects',tags:['star'],qs:0},
+      {id:'ig4',name:'Soil Types',tags:['star'],qs:0},
+      {id:'ig5',name:'Climate & Monsoon',tags:['fire'],qs:0},
+      {id:'ig6',name:'Natural Vegetation',tags:[],qs:0},
+      {id:'ig7',name:'Agriculture — Crops, Green Revolution',tags:[],qs:0},
+      {id:'ig8',name:'Minerals & Resources',tags:[],qs:6},
+      {id:'ig9',name:'National Parks & Biosphere Reserves',tags:['fire','star'],qs:0},
+    ]},
+    {id:'wgeo',name:'World Geography',importance:'Low',color:'#52c0e0',pyqQ:11,subtopics:[
+      {id:'wg1',name:'Continents & Oceans',tags:[],qs:0},
+      {id:'wg2',name:'Deserts, Grasslands & Straits',tags:['star'],qs:0},
+      {id:'wg3',name:'Countries–Capitals–Currencies',tags:[],qs:0},
+    ]},
+    // Polity
+    {id:'const',name:'Constitution Basics 🔥',importance:'High',color:'#7b5cf0',pyqQ:63,subtopics:[
+      {id:'c1',name:'Historical Background & Making',tags:['star'],qs:12},
+      {id:'c2',name:'Preamble — Features & Keywords',tags:['fire'],qs:0},
+      {id:'c3',name:'Schedules (1–12)',tags:['fire'],qs:0},
+      {id:'c4',name:'Important Articles — Most Repeated',tags:['fire','star'],qs:38},
+      {id:'c5',name:'Constitutional Amendments — Key ones',tags:['star'],qs:13},
+      {id:'c6',name:'Important Acts',tags:[],qs:8},
+    ]},
+    {id:'rights',name:'Fundamental Concepts',importance:'High',color:'#7b5cf0',pyqQ:20,subtopics:[
+      {id:'r_1',name:'Fundamental Rights (Art 12–35)',tags:['fire','star'],qs:14},
+      {id:'r_2',name:'Fundamental Duties (Art 51A)',tags:[],qs:0},
+      {id:'r_3',name:'DPSP (Art 36–51)',tags:['star'],qs:6},
+    ]},
+    {id:'ugov',name:'Union Government',importance:'High',color:'#7b5cf0',pyqQ:0,subtopics:[
+      {id:'ug1',name:'President — Powers, Election, Impeachment',tags:['fire'],qs:0},
+      {id:'ug2',name:'Vice President',tags:[],qs:0},
+      {id:'ug3',name:'Prime Minister & Council of Ministers',tags:['star'],qs:0},
+      {id:'ug4',name:'Parliament — Lok Sabha & Rajya Sabha',tags:['fire'],qs:0},
+      {id:'ug5',name:'Legislative Process — Bills, Sessions',tags:[],qs:0},
+      {id:'ug6',name:'Judiciary — SC, HC, PIL, Judicial Review',tags:['fire'],qs:15},
+    ]},
+    {id:'cbod',name:'Constitutional Bodies & Emergency',importance:'Medium',color:'#7b5cf0',pyqQ:16,subtopics:[
+      {id:'cb1',name:'Election Commission',tags:['star'],qs:0},
+      {id:'cb2',name:'UPSC & Finance Commission',tags:[],qs:0},
+      {id:'cb3',name:'CAG',tags:[],qs:0},
+      {id:'cb4',name:'Emergency Provisions (352,356,360)',tags:['fire','star'],qs:0},
+      {id:'cb5',name:'Panchayati Raj — 73rd Amendment',tags:[],qs:0},
+      {id:'cb6',name:'Municipalities — 74th Amendment',tags:[],qs:0},
+      {id:'cb7',name:'Important Committees',tags:[],qs:5},
+    ]},
+    // Economics
+    {id:'eco_basic',name:'Basic Economic Concepts',importance:'High',color:'#f7a745',pyqQ:18,subtopics:[
+      {id:'eb1',name:'Micro vs Macro Economics',tags:['star'],qs:12},
+      {id:'eb2',name:'Demand, Supply & Elasticity',tags:['fire'],qs:3},
+      {id:'eb3',name:'Inflation & Deflation Types',tags:['fire','star'],qs:0},
+      {id:'eb4',name:'GDP / GNP / NNP concepts',tags:['fire'],qs:0},
+    ]},
+    {id:'banking',name:'Banking & Monetary Policy',importance:'High',color:'#f7a745',pyqQ:5,subtopics:[
+      {id:'bk1',name:'RBI — Functions & Roles',tags:['fire','star'],qs:5},
+      {id:'bk2',name:'Repo, Reverse Repo, CRR, SLR, MSF',tags:['fire'],qs:0},
+      {id:'bk3',name:'Types of Banks — Scheduled, Commercial',tags:[],qs:0},
+    ]},
+    {id:'ind_eco',name:'Indian Economy 🔥',importance:'High',color:'#f7a745',pyqQ:49,subtopics:[
+      {id:'ie1',name:'LPG Reforms 1991',tags:['fire'],qs:12},
+      {id:'ie2',name:'Industrial Policy & Public Sector',tags:['fire'],qs:12},
+      {id:'ie3',name:'Five-Year Plans & Planning Commission',tags:['star'],qs:9},
+      {id:'ie4',name:'Green Revolution & Agriculture',tags:['star'],qs:6},
+      {id:'ie5',name:'Manufacturing Industries & Classification',tags:[],qs:10},
+      {id:'ie6',name:'Infrastructure & Govt Schemes',tags:['star'],qs:4},
+      {id:'ie7',name:'Poverty, Unemployment & NITI Aayog',tags:[],qs:0},
+      {id:'ie8',name:'Human & Population Development',tags:[],qs:5},
+      {id:'ie9',name:'Govt Budget & Fiscal Policy',tags:['star'],qs:8},
+      {id:'ie10',name:'GST Structure & Components',tags:['fire'],qs:0},
+      {id:'ie11',name:'International Trade & Organizations',tags:[],qs:7},
+    ]},
+    // Science
+    {id:'physics',name:'Physics 🔥🔥',importance:'High',color:'#3dba6f',pyqQ:38,subtopics:[
+      {id:'ph1',name:'Mechanics & Kinematics — Motion, Laws',tags:['fire'],qs:7},
+      {id:'ph2',name:'Rotational Motion & Moment of Inertia',tags:[],qs:3},
+      {id:'ph3',name:'Work, Power & Energy',tags:['star'],qs:0},
+      {id:'ph4',name:'Optics — Mirrors, Reflection, Refraction',tags:['star'],qs:5},
+      {id:'ph5',name:'Sound & Waves',tags:['fire','star'],qs:6},
+      {id:'ph6',name:'Electricity & Circuits',tags:['fire'],qs:2},
+      {id:'ph7',name:'Thermodynamics & Heat',tags:[],qs:5},
+      {id:'ph8',name:'Nuclear Physics & Radioactivity',tags:['star'],qs:4},
+      {id:'ph9',name:'Fluid Dynamics',tags:[],qs:2},
+      {id:'ph10',name:'Modern Physics — Photoelectric, Bohr Model',tags:[],qs:3},
+      {id:'ph11',name:'Gravitation & Magnetism',tags:[],qs:0},
+    ]},
+    {id:'chem',name:'Chemistry',importance:'Medium',color:'#3dba6f',pyqQ:9,subtopics:[
+      {id:'ch1',name:'Periodic Table — Groups, Periods, Trends',tags:['fire','star'],qs:0},
+      {id:'ch2',name:'Acids, Bases & Salts',tags:['fire'],qs:0},
+      {id:'ch3',name:'Metals & Non-metals',tags:['star'],qs:0},
+      {id:'ch4',name:'Carbon & Compounds',tags:[],qs:0},
+      {id:'ch5',name:'Environmental Chemistry — AQI, PM Particles',tags:['star'],qs:2},
+      {id:'ch6',name:'Everyday Chemistry',tags:[],qs:0},
+      {id:'ch7',name:'Miscellaneous Chemistry',tags:[],qs:4},
+    ]},
+    {id:'bio',name:'Biology 🔥🔥',importance:'High',color:'#3dba6f',pyqQ:23,subtopics:[
+      {id:'bi1',name:'Cell Structure & Organelles',tags:['fire'],qs:5},
+      {id:'bi2',name:'Human Body Systems — Digestive, Respiratory',tags:['fire','star'],qs:0},
+      {id:'bi3',name:'Human Physiology — Heart, Brain, Vision',tags:['fire'],qs:6},
+      {id:'bi4',name:'Diseases & Deficiency Diseases',tags:['star'],qs:0},
+      {id:'bi5',name:'Vitamins & Nutrition',tags:['fire','star'],qs:0},
+      {id:'bi6',name:'Genetics & Molecular Biology',tags:[],qs:3},
+      {id:'bi7',name:'Plant Physiology — Hormones, Transpiration',tags:[],qs:2},
+      {id:'bi8',name:'Biotechnology, Vaccines & Immunity',tags:['star'],qs:0},
+      {id:'bi9',name:'Respiration, Metabolism & Enzymes',tags:[],qs:6},
+    ]},
+    // Environment
+    {id:'env',name:'Environment & Ecology',importance:'Medium',color:'#4ecdc4',pyqQ:0,subtopics:[
+      {id:'en1',name:'Ecosystem — Types, Components',tags:[],qs:0},
+      {id:'en2',name:'Food Chain & Biodiversity',tags:['star'],qs:0},
+      {id:'en3',name:'Pollution — Air, Water, Soil',tags:['star'],qs:0},
+      {id:'en4',name:'Climate Change, Global Warming, Ozone',tags:['fire'],qs:0},
+      {id:'en5',name:'Environmental Treaties — Kyoto, Paris',tags:['star'],qs:0},
+      {id:'en6',name:'UNEP, WWF & National Parks',tags:['fire'],qs:0},
+    ]},
+    // Current Affairs
+    {id:'ca_main',name:'Current Affairs (Last 6–8 Months) 🔥🔥',importance:'High',color:'#e05299',pyqQ:181,subtopics:[
+      {id:'ca1',name:'Government Schemes & Policies',tags:['fire','star'],qs:0},
+      {id:'ca2',name:'Union Budget & Economic Survey',tags:['star'],qs:0},
+      {id:'ca3',name:'Awards & Honours — National & International',tags:['fire'],qs:0},
+      {id:'ca4',name:'Sports Events — Results & Records',tags:['star'],qs:0},
+      {id:'ca5',name:'Appointments — Governors, CJI, CEOs',tags:['fire'],qs:0},
+      {id:'ca6',name:'Defence Exercises & Partnerships',tags:['star'],qs:0},
+      {id:'ca7',name:'International Organizations & Summits',tags:['star'],qs:0},
+      {id:'ca8',name:'Space Missions — ISRO & NASA',tags:['fire'],qs:0},
+      {id:'ca9',name:'Reports, Indexes & Rankings',tags:['star'],qs:0},
+      {id:'ca10',name:'Books & Authors, Important Days',tags:[],qs:0},
+    ]},
+    // Static GK
+    {id:'art_cult',name:'Art & Culture',importance:'High',color:'#f7c948',pyqQ:0,subtopics:[
+      {id:'ac1',name:'Classical Dances — State-wise',tags:['star'],qs:0},
+      {id:'ac2',name:'Folk Dances — State-wise',tags:['fire'],qs:0},
+      {id:'ac3',name:'Music Gharanas & Instruments',tags:[],qs:0},
+      {id:'ac4',name:'Festivals & Fairs',tags:[],qs:0},
+      {id:'ac5',name:'Paintings — Madhubani, Warli, Miniature',tags:['star'],qs:0},
+      {id:'ac6',name:'UNESCO World Heritage Sites',tags:['fire','star'],qs:0},
+      {id:'ac7',name:'Books & Authors',tags:['fire'],qs:0},
+      {id:'ac8',name:'National Symbols & States/Capitals',tags:[],qs:0},
+      {id:'ac9',name:'Countries–Capitals–Currencies',tags:[],qs:0},
+      {id:'ac10',name:'Important Organizations & HQs',tags:['star'],qs:0},
+    ]},
+    {id:'sports_gk',name:'Sports GK',importance:'Medium',color:'#5299e0',pyqQ:0,subtopics:[
+      {id:'sp1',name:'Cups & Trophies — Sport-wise',tags:['star'],qs:0},
+      {id:'sp2',name:'Grand Slams, Olympics, CWG, Asian Games',tags:['fire'],qs:0},
+      {id:'sp3',name:'Sports Terms & Stadiums',tags:[],qs:0},
+    ]},
+    {id:'def_main',name:'Defence & International Orgs',importance:'Medium',color:'#e07a52',pyqQ:0,subtopics:[
+      {id:'df1',name:'Missile Systems — Agni, BrahMos etc.',tags:['star'],qs:0},
+      {id:'df2',name:'ISRO, DRDO — Key Missions',tags:['fire'],qs:0},
+      {id:'df3',name:'UN Agencies — WHO, IMF, World Bank',tags:['star'],qs:0},
+    ]},
+  ]
+};
+
+// ===== STATE =====
+let S={
+  completed:{},highlighted:{},links:{},notes:{},
+  customSubtopics:[],customTopics:[],customSubjects:[],
+  vocab:[],alarms:[],
+  dailyLog:{},studyHours:{},
+  activeSection:'dashboard',activeSubjectId:null,
+  openTopics:{},filter:'all',searchQ:'',
+  user:null,timerStart:null,timerRunning:false,timerElapsed:0
+};
+
+function load(){try{const d=localStorage.getItem('ssc_ult_v3');if(d)Object.assign(S,JSON.parse(d));}catch(e){}}
+function save(){try{localStorage.setItem('ssc_ult_v3',JSON.stringify(S));}catch(e){}}
+load();
+
+// ===== HELPERS =====
+function today(){return new Date().toISOString().split('T')[0]}
+function toast(msg,col='var(--green)'){const t=document.getElementById('toast');t.textContent=msg;t.style.borderColor=col;t.style.color=col;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2300)}
+
+function getTopicsForSection(secId){
+  if(SUBJECTS[secId]) return SUBJECTS[secId];
+  const cs=S.customSubjects.find(s=>s.id===secId);
+  if(!cs) return [];
+  return S.customTopics.filter(t=>t.subjectId===secId).map(t=>({
+    ...t,subtopics:S.customSubtopics.filter(s=>s.topicId===t.id)
+  }));
+}
+
+function getSectionCompletion(secId){
+  const topics=getTopicsForSection(secId);
+  let total=0,done=0;
+  topics.forEach(t=>{
+    [...t.subtopics,...S.customSubtopics.filter(s=>s.topicId===t.id&&!t.subtopics.find(x=>x.id===s.id))].forEach(s=>{
+      total++;if(S.completed[s.id]?.done)done++;
+    });
+  });
+  return{total,done};
+}
+
+function getOverall(){
+  let total=0,done=0;
+  [...['english','math','reasoning','gkgs'],...S.customSubjects.map(s=>s.id)].forEach(sid=>{
+    const r=getSectionCompletion(sid);total+=r.total;done+=r.done;
+  });
+  return{total,done};
+}
+
+function getStreak(){
+  let streak=0;const d=new Date();
+  while(true){
+    const k=d.toISOString().split('T')[0];
+    if((S.dailyLog[k]&&S.dailyLog[k].length>0)||(S.studyHours[k]&&S.studyHours[k]>0)){streak++;d.setDate(d.getDate()-1);}
+    else break;
+  }
+  return streak;
+}
+
+function getTodayHours(){
+  let h=S.studyHours[today()]||0;
+  if(S.timerRunning&&S.timerStart){h+=(Date.now()-S.timerStart)/3600000;}
+  return h;
+}
+
+// ===== TOGGLE =====
+function toggleDone(id){
+  const was=S.completed[id]?.done;
+  S.completed[id]={done:!was,date:today()};
+  if(!was){
+    if(!S.dailyLog[today()])S.dailyLog[today()]=[];
+    if(!S.dailyLog[today()].includes(id))S.dailyLog[today()].push(id);
+    toast('✅ Marked complete!');
+  }else{
+    if(S.dailyLog[today()])S.dailyLog[today()]=S.dailyLog[today()].filter(x=>x!==id);
+    toast('↩️ Marked pending','var(--orange)');
+  }
+  save();updateHeader();renderSidebar();renderTabCounts();
+  const el=document.getElementById(`sr-${id}`);
+  if(el){
+    const chk=el.querySelector('.chk');const sn=el.querySelector('.sn');
+    if(chk){chk.classList.toggle('done',!was);}
+    if(sn){sn.classList.toggle('done',!was);}
+  }
+}
+
+function toggleHL(id){
+  S.highlighted[id]=!S.highlighted[id];
+  save();
+  const el=document.getElementById(`sr-${id}`);
+  if(el)el.classList.toggle('hl',!!S.highlighted[id]);
+  const btn=el?.querySelector('.hl-btn');
+  if(btn)btn.style.color=S.highlighted[id]?'var(--accent)':'';
+}
+
+// ===== HEADER =====
+function updateHeader(){
+  const{total,done}=getOverall();
+  document.getElementById('hs-done').textContent=done;
+  document.getElementById('hs-total').textContent=total;
+  document.getElementById('hs-streak').textContent=getStreak()+'🔥';
+  document.getElementById('hs-pct').textContent=total?Math.round(done/total*100)+'%':'0%';
+  document.getElementById('hs-hrs').textContent=getTodayHours().toFixed(1)+'h';
+  document.getElementById('user-label').textContent=S.user?S.user.name.split(' ')[0]:'Login';
+}
+
+// ===== TABS =====
+function renderTabs(){
+  const allSections=[...SECTIONS];
+  S.customSubjects.forEach(cs=>allSections.splice(5,0,{...cs,isCustom:true}));
+  let html='';
+  allSections.forEach(sec=>{
+    const isPage=sec.isPage;
+    let pct='';
+    if(!isPage&&sec.id!=='dashboard'){
+      const{total,done}=getSectionCompletion(sec.id);
+      pct=`<span class="tpct">${total?Math.round(done/total*100):0}%</span>`;
+    }
+    html+=`<div class="tab ${S.activeSection===sec.id?'active':''}" onclick="setSection('${sec.id}')" style="${S.activeSection===sec.id?'color:'+sec.color:''}">
+      ${sec.icon} ${sec.label} ${pct}
+      ${sec.isCustom?`<button onclick="event.stopPropagation();confirmDeleteSubject('${sec.id}','${sec.label||sec.id}')" title="Delete subject" style="margin-left:4px;background:rgba(248,81,73,.15);border:1px solid rgba(248,81,73,.5);color:var(--red);border-radius:4px;padding:1px 6px;cursor:pointer;font-size:.68rem;font-weight:700;line-height:1.4">🗑</button>`:''}
+    </div>`;
+  });
+  html+=`<div class="tab" onclick="openAddSubjectModal()" style="color:var(--muted)">➕ Add Subject</div>`;
+  document.getElementById('tabs').innerHTML=html;
+}
+
+function renderTabCounts(){
+  document.querySelectorAll('.tab .tpct').forEach(el=>{
+    const tab=el.closest('.tab');
+    const secId=tab?.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    if(secId){
+      const{total,done}=getSectionCompletion(secId);
+      el.textContent=total?Math.round(done/total*100)+'%':'0%';
+    }
+  });
+}
+
+function setSection(id,subId=null){
+  S.activeSection=id;S.activeSubjectId=subId;
+  S.filter='all';S.searchQ='';
+  renderAll();
+}
+
+// ===== SIDEBAR =====
+function renderSidebar(){
+  const el=document.getElementById('sidebar');
+  if(['dashboard','vocab','daily','study','alarms'].includes(S.activeSection)){el.innerHTML='';return;}
+  const topics=getTopicsForSection(S.activeSection);
+  const sec=SECTIONS.find(s=>s.id===S.activeSection)||S.customSubjects.find(s=>s.id===S.activeSection);
+  let html=`<div class="nav-lbl">${sec?.label||''} Topics</div>`;
+  topics.forEach(t=>{
+    const subs=[...t.subtopics,...S.customSubtopics.filter(s=>s.topicId===t.id&&!t.subtopics.find(x=>x.id===s.id))];
+    const done=subs.filter(s=>S.completed[s.id]?.done).length;
+    const pct=subs.length?Math.round(done/subs.length*100):0;
+    const color=t.color||sec?.color||'var(--accent)';
+    html+=`<div class="ni ${S.activeSubjectId===t.id?'active':''}" onclick="S.activeSubjectId='${t.id}';renderMain()">
+      <span class="dot" style="background:${color}"></span>
+      <span style="flex:1;font-size:.75rem">${t.name.replace(/ 🔥+/,'')}</span>
+      <span class="nc">${done}/${subs.length}</span>
+    </div>
+    <div class="npb"><div class="npbf" style="width:${pct}%;background:${color}"></div></div>`;
+  });
+  el.innerHTML=html;
+}
+
+// ===== MAIN RENDER =====
+function renderAll(){updateHeader();renderTabs();renderSidebar();renderMain();}
+function renderMain(){
+  const m=document.getElementById('main');
+  if(S.activeSection==='dashboard'){m.innerHTML=renderDashboard();return;}
+  if(S.activeSection==='vocab'){m.innerHTML=renderVocab();bindVocabEvents();return;}
+  if(S.activeSection==='daily'){m.innerHTML=renderDaily();return;}
+  if(S.activeSection==='study'){m.innerHTML=renderStudy();bindStudyEvents();return;}
+  if(S.activeSection==='alarms'){m.innerHTML=renderAlarms();return;}
+  m.innerHTML=renderSubjectView(S.activeSection);
+}
+
+// ===== DASHBOARD =====
+function renderDashboard(){
+  const{total,done}=getOverall();
+  const pct=total?Math.round(done/total*100):0;
+  const mainSecs=[
+    {id:'english',label:'English',icon:'📖',color:'#e05299',sub:'Grammar · Vocab · RC · Sentence'},
+    {id:'math',label:'Math',icon:'📐',color:'#52c0e0',sub:'Arithmetic · Algebra · Geometry · Trig'},
+    {id:'reasoning',label:'Reasoning',icon:'🧠',color:'#bc8cff',sub:'Verbal · Non-Verbal · Puzzles'},
+    {id:'gkgs',label:'GK / GS',icon:'🌐',color:'#f7c948',sub:'History · Geo · Polity · Eco · Sci'},
+  ];
+  let html=`
+    <div style="margin-bottom:18px">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:2px">📊 Dashboard</div>
+      <div style="color:var(--muted);font-size:.78rem">SSC CGL 2026 — Complete Study Tracker</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:18px">
+      <div style="display:flex;justify-content:space-between;font-size:.73rem;color:var(--muted);margin-bottom:8px">
+        <span>Overall Progress</span><span style="color:var(--accent);font-weight:700">${done}/${total} subtopics · ${pct}%</span>
+      </div>
+      <div style="height:10px;background:var(--border);border-radius:99px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:linear-gradient(90deg,var(--accent),#ff6b6b);border-radius:99px;transition:width .5s"></div>
+      </div>
+    </div>
+    <div class="dg">`;
+  mainSecs.forEach(sec=>{
+    const{total:t,done:d}=getSectionCompletion(sec.id);
+    const p=t?Math.round(d/t*100):0;
+    html+=`<div class="dc" onclick="setSection('${sec.id}')" style="${p===100?'border-color:var(--green)':''}">
+      <div class="dc-ico">${sec.icon}</div>
+      <div class="dc-title" style="color:${sec.color}">${sec.label}</div>
+      <div class="dc-sub">${sec.sub}</div>
+      <div class="dc-pct" style="color:${sec.color}">${p}%</div>
+      <div class="dmb"><div class="dmbf" style="width:${p}%;background:${sec.color}"></div></div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:4px">${d}/${t} done</div>
+    </div>`;
+  });
+  S.customSubjects.forEach(sec=>{
+    const{total:t,done:d}=getSectionCompletion(sec.id);
+    const p=t?Math.round(d/t*100):0;
+    html+=`<div class="dc" onclick="setSection('${sec.id}')">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between">
+        <div class="dc-ico">${sec.icon||'📌'}</div>
+        <button onclick="event.stopPropagation();confirmDeleteSubject('${sec.id}','${sec.label}')" title="Delete subject" style="background:rgba(248,81,73,.15);border:1px solid rgba(248,81,73,.4);color:var(--red);border-radius:6px;padding:2px 8px;cursor:pointer;font-size:.7rem;font-weight:700;font-family:Nunito,sans-serif">🗑 Delete</button>
+      </div>
+      <div class="dc-title" style="color:${sec.color||'var(--accent)'}">${sec.label}</div>
+      <div class="dc-sub">Custom Subject</div>
+      <div class="dc-pct" style="color:${sec.color||'var(--accent)'}">${p}%</div>
+      <div class="dmb"><div class="dmbf" style="width:${p}%;background:${sec.color||'var(--accent)'}"></div></div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:4px">${d}/${t} done</div>
+    </div>`;
+  });
+  html+=`<div class="dc" onclick="openAddSubjectModal()" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px">
+    <div style="font-size:2rem;margin-bottom:8px">➕</div>
+    <div style="font-weight:700;color:var(--muted)">Add Subject</div>
+    <div style="font-size:.7rem;color:var(--muted);margin-top:4px">Create custom subject</div>
+  </div>`;
+  html+=`</div>`;
+
+  // Stats row
+  const todayDone=(S.dailyLog[today()]||[]).length;
+  const vocabCount=S.vocab.length;
+  html+=`<div class="statrow">
+    ${[
+      {n:todayDone,l:'Done Today',c:'var(--green)'},
+      {n:S.vocab.length,l:'Vocab Words',c:'var(--blue)'},
+      {n:Object.values(S.highlighted).filter(Boolean).length,l:'Starred',c:'var(--accent)'},
+      {n:S.alarms.filter(a=>a.on).length,l:'Active Alarms',c:'var(--red)'},
+      {n:getTodayHours().toFixed(1)+'h',l:'Study Today',c:'var(--orange)'},
+      {n:getStreak()+'🔥',l:'Day Streak',c:'var(--red)'},
+    ].map(x=>`<div class="sc"><div class="sc-n" style="color:${x.c}">${x.n}</div><div class="sc-l">${x.l}</div></div>`).join('')}
+  </div>`;
+
+  // Today's vocab quiz preview
+  if(S.vocab.length>0){
+    const todayVocab=S.vocab.slice(0,3);
+    html+=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px">
+      <div style="font-weight:700;font-size:.88rem;margin-bottom:10px">📝 Today's Vocabulary — <span style="color:var(--green);font-size:.75rem">Tap to reveal meaning</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${todayVocab.map(v=>`<div onclick="this.style.background='var(--surface2)';this.querySelector('.vm').style.display='block'" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;flex:1;min-width:160px">
+          <div style="font-weight:800;color:var(--accent)">${v.word}</div>
+          <div class="vm" style="display:none;font-size:.75rem;color:var(--muted);margin-top:4px">${v.meaning}</div>
+        </div>`).join('')}
+      </div>
+      <button class="btn btn-sm" style="margin-top:10px" onclick="setSection('vocab')">📝 Open Full Vocabulary →</button>
+    </div>`;
+  }
+
+  // GK/GS PYQ priority
+  html+=`<div style="font-weight:700;margin-bottom:10px;font-size:.88rem">🔥 GK/GS PYQ Priority (2025)</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px">
+    <table class="tbl"><thead><tr><th>Rank</th><th>Subject</th><th>Questions</th><th>%</th></tr></thead><tbody>
+    ${[
+      {r:'🔴 1',s:'Static GK',q:359,p:33.37},{r:'🔴 2',s:'Current Affairs',q:181,p:16.81},
+      {r:'🔴 3',s:'Polity',q:122,p:11.34},{r:'🟡 4',s:'History',q:107,p:9.95},
+      {r:'🟡 5',s:'Economics',q:98,p:9.11},{r:'🟢 6',s:'Science',q:70,p:6.51},
+      {r:'🟢 7',s:'Geography',q:59,p:5.49},
+    ].map(x=>`<tr><td>${x.r}</td><td style="font-weight:700">${x.s}</td>
+      <td><div style="display:flex;align-items:center;gap:8px"><div style="width:${Math.round(x.p/33.37*100)}px;height:5px;background:var(--accent);border-radius:99px"></div>${x.q}</div></td>
+      <td style="color:var(--accent);font-weight:700">${x.p}%</td></tr>`).join('')}
+    </tbody></table>
+  </div>`;
+
+  // Study hours graph
+  html+=renderStudyGraph();
+  return html;
+}
+
+function renderStudyGraph(){
+  const days=[];const now=new Date();
+  for(let i=6;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);days.push(d.toISOString().split('T')[0]);}
+  const maxH=Math.max(...days.map(d=>S.studyHours[d]||0),1);
+  let html=`<div class="graph-wrap"><div class="graph-title">📈 Study Hours — Last 7 Days</div>
+    <div class="bar-chart">`;
+  days.forEach(d=>{
+    const h=S.studyHours[d]||0;
+    const pct=Math.round(h/maxH*100);
+    const label=new Date(d).toLocaleDateString('en',{weekday:'short'});
+    const isToday=d===today();
+    html+=`<div class="bar-col">
+      <div class="bar-val" style="bottom:${pct+22}px">${h>0?h.toFixed(1)+'h':''}</div>
+      <div class="bar-fill" style="height:${pct}%;background:${isToday?'var(--accent)':'var(--blue)'};opacity:${isToday?1:.7}"></div>
+      <div class="bar-lbl">${label}${isToday?'*':''}</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+  return html;
+}
+
+// ===== SUBJECT VIEW =====
+function renderSubjectView(secId){
+  const sec=SECTIONS.find(s=>s.id===secId)||S.customSubjects.find(s=>s.id===secId);
+  if(!sec)return'';
+  const topics=getTopicsForSection(secId);
+  const{total,done}=getSectionCompletion(secId);
+  const pct=total?Math.round(done/total*100):0;
+  const color=sec.color||'var(--accent)';
+  const q=S.searchQ.toLowerCase();
+
+  const filtered=S.activeSubjectId?topics.filter(t=>t.id===S.activeSubjectId):topics;
+
+  let html=`<div class="ctrl">
+    <input class="search" type="text" placeholder="🔍 Search subtopics..." value="${S.searchQ}" oninput="S.searchQ=this.value;renderMain()">
+    ${['all','pending','done','highlighted','fire'].map(f=>`<button class="fbtn ${S.filter===f?'active':''}" onclick="S.filter='${f}';renderMain()">${f==='done'?'✅ Done':f==='highlighted'?'⭐ Starred':f==='fire'?'🔥 Fire':f.charAt(0).toUpperCase()+f.slice(1)}</button>`).join('')}
+    <button class="btn btn-primary" onclick="openAddTopicModal('${secId}')">+ Topic</button>
+    <button class="btn" onclick="window.print()">🖨️</button>
+  </div>
+  <div class="subj-hdr" style="background:linear-gradient(135deg,${color}22,${color}08);border:1px solid ${color}44">
+    <div class="subj-icon">${sec.icon||'📌'}</div>
+    <div style="flex:1">
+      <div class="subj-title" style="color:${color}">${sec.label}</div>
+      <div class="subj-meta">${total} subtopics · ${done} completed</div>
+      <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+        <span class="bdg bdg-y">📊 ${total} Total</span>
+        <span class="bdg bdg-g">✅ ${done} Done</span>
+        ${pct===100?'<span class="bdg" style="background:rgba(63,185,80,.2);color:var(--green);border:1px solid rgba(63,185,80,.4)">🎉 Complete!</span>':''}
+        ${S.customSubjects.find(s=>s.id===secId)?`<button onclick="confirmDeleteSubject('${secId}','${sec.label}')" style="background:rgba(248,81,73,.15);border:1px solid rgba(248,81,73,.5);color:var(--red);border-radius:6px;padding:3px 10px;cursor:pointer;font-size:.72rem;font-weight:700;font-family:Nunito,sans-serif">🗑 Delete Subject</button>`:''}
+      </div>
+    </div>
+    <div class="spw">
+      <div class="spct" style="color:${color}">${pct}%</div>
+      <div style="font-size:.65rem;color:var(--muted)">${done}/${total}</div>
+      <div class="sbar"><div class="sbarf" style="width:${pct}%;background:${color}"></div></div>
+    </div>
+  </div>`;
+
+  filtered.forEach(topic=>{
+    const builtinSubs=topic.subtopics||[];
+    const customSubs=S.customSubtopics.filter(s=>s.topicId===topic.id&&!builtinSubs.find(x=>x.id===s.id));
+    const allSubs=[...builtinSubs,...customSubs];
+    const tColor=topic.color||color;
+
+    const hiddenIds=S.hiddenSubtopics||[];
+    const filteredSubs=allSubs.filter(s=>{
+      if(hiddenIds.includes(s.id)&&S.filter!=='hidden')return false;
+      if(q&&!s.name.toLowerCase().includes(q))return false;
+      if(S.filter==='done'&&!S.completed[s.id]?.done)return false;
+      if(S.filter==='pending'&&S.completed[s.id]?.done)return false;
+      if(S.filter==='highlighted'&&!S.highlighted[s.id])return false;
+      if(S.filter==='fire'&&!s.tags?.includes('fire'))return false;
+      return true;
+    });
+    if(q&&filteredSubs.length===0&&S.filter!=='all')return;
+
+    const tDone=allSubs.filter(s=>S.completed[s.id]?.done).length;
+    const tTotal=allSubs.length;
+    const tPct=tTotal?Math.round(tDone/tTotal*100):0;
+    const isOpen=!!S.openTopics[topic.id];
+
+    html+=`<div class="tc">
+      <div class="th" onclick="S.openTopics['${topic.id}']=!S.openTopics['${topic.id}'];renderMain()">
+        <span class="tex ${isOpen?'open':''}">▶</span>
+        <span class="tn">${topic.name}</span>
+        ${topic.pyqQ?`<span class="tqb">📊 ${topic.pyqQ}Q</span>`:''}
+        <span class="imp imp-${topic.importance||'Medium'}">${topic.importance||'Med'}</span>
+        <span style="font-size:.68rem;color:var(--muted)">${tDone}/${tTotal}</span>
+        <div class="tmb"><div class="tmbf" style="width:${tPct}%;background:${tColor}"></div></div>
+        ${topic.isCustom||S.customTopics.find(t=>t.id===topic.id)?`<button class="ib del" onclick="event.stopPropagation();deleteCustomTopic('${topic.id}','${secId}')">🗑</button>`:''}
+        <button class="btn btn-sm" onclick="event.stopPropagation();openAddSubtopicModal('${topic.id}','${secId}')">+Sub</button>
+      </div>
+      <div class="sts ${isOpen?'open':''}">`;
+
+    filteredSubs.forEach(sub=>{
+      const isDone=S.completed[sub.id]?.done;
+      const isHL=S.highlighted[sub.id];
+      const link=S.links[sub.id];
+      const note=S.notes[sub.id];
+      const isCustom=S.customSubtopics.some(s=>s.id===sub.id);
+      html+=`<div class="sr ${isHL?'hl':''}" id="sr-${sub.id}">
+        <div class="chk ${isDone?'done':''}" onclick="toggleDone('${sub.id}')"></div>
+        <div class="sn ${isDone?'done':''}">${sub.name}${note?` <span style="color:var(--muted);font-size:.62rem" title="${note}">📝</span>`:''}${link?` <a class="sl" href="${link}" target="_blank" onclick="event.stopPropagation()">🔗</a>`:''}</div>
+        <div class="stags">
+          ${sub.tags?.includes('fire')?'<span class="tag tag-fire">🔥</span>':''}
+          ${sub.tags?.includes('star')?'<span class="tag tag-star">⭐</span>':''}
+          ${sub.qs?`<span class="tag tag-qs">${sub.qs}Q</span>`:''}
+        </div>
+        <div class="sact">
+          <button class="ib hl-btn" onclick="toggleHL('${sub.id}')" title="${isHL?'Unstar':'Star'}" style="color:${isHL?'var(--accent)':''}">⭐</button>
+          <button class="ib" onclick="openLinkModal('${sub.id}','${sub.name}')" title="Add Link/Note">🔗</button>
+          <button class="ib del" onclick="deleteSubtopicEntry('${sub.id}',${isCustom})" title="Delete subtopic">🗑</button>
+        </div>
+      </div>`;
+    });
+
+    if(filteredSubs.length===0&&(q||S.filter!=='all')){
+      html+=`<div style="color:var(--muted);font-size:.76rem;padding:8px">No matching subtopics</div>`;
+    }
+    html+=`<button class="atb" onclick="openAddSubtopicModal('${topic.id}','${secId}')">+ Add Subtopic</button>
+      </div></div>`;
+  });
+
+  html+=`<button class="atb" style="margin-top:8px" onclick="openAddTopicModal('${secId}')">+ Add New Topic</button>`;
+  return html;
+}
+
+// ===== VOCABULARY =====
+function renderVocab(){
+  const todayQ=S.vocab.filter(v=>!v.lastAsked||v.lastAsked!==today());
+  let html=`
+    <div style="margin-bottom:16px">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:2px">📝 Vocabulary Builder</div>
+      <div style="color:var(--muted);font-size:.77rem">${S.vocab.length} words · ${todayQ.length} due today</div>
+    </div>
+    <div class="ctrl">
+      <button class="btn btn-primary" onclick="openAddVocabModal()">➕ Add Word</button>
+      <button class="btn" onclick="openImportVocabModal()">📄 Import (Text/PDF)</button>
+      <button class="btn btn-green" onclick="startVocabQuiz()" ${S.vocab.length===0?'disabled':''}>🧠 Daily Quiz</button>
+      <input class="search" type="text" placeholder="🔍 Search vocabulary..." id="vocab-search" style="max-width:220px" oninput="filterVocab(this.value)">
+    </div>
+    <div id="vocab-list">`;
+  if(S.vocab.length===0){
+    html+=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:40px;text-align:center;color:var(--muted)">
+      No vocabulary yet. Add words manually or import from text/PDF!<br><br>
+      <button class="btn btn-primary" onclick="openAddVocabModal()">➕ Add First Word</button>
+    </div>`;
+  } else {
+    S.vocab.forEach((v,i)=>{
+      html+=`<div class="vcard" id="vc-${i}">
+        <div style="min-width:130px">
+          <div class="vword">${v.word}</div>
+          <div style="font-size:.62rem;color:var(--muted);margin-top:2px">${v.pos||''}${v.lastAsked===today()?'<span style="color:var(--green);margin-left:6px">✓ Today</span>':''}</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:.83rem">${v.meaning}</div>
+          ${v.example?`<div style="font-size:.7rem;color:var(--muted);font-style:italic;margin-top:3px">"${v.example}"</div>`:''}
+        </div>
+        <div style="display:flex;gap:4px;flex-shrink:0">
+          <button class="ib" onclick="editVocab(${i})">✏️</button>
+          <button class="ib del" onclick="deleteVocab(${i})">🗑</button>
+        </div>
+      </div>`;
+    });
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function bindVocabEvents(){}
+
+function filterVocab(q){
+  document.querySelectorAll('.vcard').forEach((el,i)=>{
+    const v=S.vocab[i];
+    if(!v)return;
+    el.style.display=(v.word+v.meaning).toLowerCase().includes(q.toLowerCase())?'flex':'none';
+  });
+}
+
+function deleteVocab(i){if(!confirm('Delete this word?'))return;S.vocab.splice(i,1);save();renderMain();}
+
+// ===== DAILY LOG =====
+function renderDaily(){
+  const dates=Object.keys(S.dailyLog).sort((a,b)=>b.localeCompare(a));
+  let html=`<div style="margin-bottom:16px">
+    <div style="font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:2px">📅 Daily Study Log</div>
+    <div style="color:var(--muted);font-size:.77rem">Streak: ${getStreak()}🔥 · Total days logged: ${dates.length}</div>
+  </div>`;
+  html+=renderStudyGraph();
+  if(dates.length===0){
+    html+=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:40px;text-align:center;color:var(--muted)">No activity logged yet. Start studying! 💪</div>`;
+  } else {
+    dates.forEach(date=>{
+      const items=S.dailyLog[date]||[];
+      if(items.length===0)return;
+      const hrs=S.studyHours[date]||0;
+      const isToday=date===today();
+      const label=isToday?'📅 Today':new Date(date).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+      html+=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <div style="font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700">${label}</div>
+          ${hrs>0?`<span style="color:var(--orange);font-size:.75rem;font-weight:700">⏱️ ${hrs.toFixed(1)}h studied</span>`:''}
+          <span style="margin-left:auto;color:var(--green);font-size:.75rem;font-weight:700">✅ ${items.length} completed</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          ${items.map(id=>{
+            const sub=findSubById(id);
+            return sub?`<div style="background:var(--surface2);border:1px solid var(--green);border-radius:5px;padding:3px 8px;font-size:.7rem;color:var(--green)">✓ ${sub.name}</div>`:'';
+          }).join('')}
+        </div>
+        <button class="btn btn-sm btn-red" style="margin-top:8px" onclick="deleteDay('${date}')">🗑 Delete Day</button>
+      </div>`;
+    });
+  }
+  return html;
+}
+
+function deleteDay(date){
+  if(!confirm(`Delete log for ${date}?`))return;
+  delete S.dailyLog[date];
+  delete S.studyHours[date];
+  save();renderMain();toast('🗑️ Day deleted','var(--red)');
+}
+
+function findSubById(id){
+  for(const secId of['english','math','reasoning','gkgs']){
+    const topics=SUBJECTS[secId]||[];
+    for(const t of topics){
+      const found=t.subtopics?.find(s=>s.id===id);
+      if(found)return found;
+    }
+  }
+  return S.customSubtopics.find(s=>s.id===id);
+}
+
+// ===== STUDY TIMER =====
+let timerInterval=null;
+function renderStudy(){
+  const hrs=getTodayHours();
+  const weekDays=[];const now=new Date();
+  for(let i=6;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);weekDays.push(d.toISOString().split('T')[0]);}
+  const weekTotal=weekDays.reduce((a,d)=>a+(S.studyHours[d]||0),0);
+
+  let html=`<div style="margin-bottom:16px">
+    <div style="font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:2px">⏱️ Study Timer</div>
+    <div style="color:var(--muted);font-size:.77rem">Track your daily study hours</div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;text-align:center;margin-bottom:20px">
+    <div id="timer-display" style="font-family:'Rajdhani',sans-serif;font-size:4rem;font-weight:700;color:var(--accent);letter-spacing:4px">${formatTime(S.timerRunning?(Date.now()-S.timerStart)/1000+S.timerElapsed:S.timerElapsed)}</div>
+    <div style="color:var(--muted);font-size:.77rem;margin-bottom:20px">Today total: ${hrs.toFixed(2)} hours</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-primary" id="timer-start-btn" onclick="timerToggle()">${S.timerRunning?'⏸ Pause':'▶ Start'}</button>
+      <button class="btn" onclick="timerReset()">🔄 Reset</button>
+      <button class="btn btn-green" onclick="openLogHoursModal()">➕ Log Hours Manually</button>
+    </div>
+  </div>
+  <div class="statrow">
+    ${[
+      {n:hrs.toFixed(1)+'h',l:'Today',c:'var(--accent)'},
+      {n:weekTotal.toFixed(1)+'h',l:'This Week',c:'var(--blue)'},
+      {n:Object.keys(S.studyHours).length+' days',l:'Total Days',c:'var(--purple)'},
+      {n:Object.values(S.studyHours).reduce((a,b)=>a+b,0).toFixed(1)+'h',l:'Total Hours',c:'var(--orange)'},
+    ].map(x=>`<div class="sc"><div class="sc-n" style="color:${x.c}">${x.n}</div><div class="sc-l">${x.l}</div></div>`).join('')}
+  </div>`;
+  html+=renderStudyGraph();
+  return html;
+}
+
+function bindStudyEvents(){
+  if(S.timerRunning){
+    timerInterval=setInterval(()=>{
+      const el=document.getElementById('timer-display');
+      if(el){const secs=(Date.now()-S.timerStart)/1000+S.timerElapsed;el.textContent=formatTime(secs);}
+      updateHeader();
+    },1000);
+  }
+}
+
+function formatTime(secs){
+  const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=Math.floor(secs%60);
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+window.timerToggle=function(){
+  if(S.timerRunning){
+    S.timerElapsed+=(Date.now()-S.timerStart)/1000;
+    S.timerStart=null;S.timerRunning=false;
+    if(!S.studyHours[today()])S.studyHours[today()]=0;
+    S.studyHours[today()]+=S.timerElapsed/3600;S.timerElapsed=0;
+    clearInterval(timerInterval);save();toast('⏱️ Session saved!');
+  } else {
+    S.timerStart=Date.now();S.timerRunning=true;
+  }
+  save();renderMain();
+}
+
+window.timerReset=function(){
+  clearInterval(timerInterval);S.timerRunning=false;S.timerStart=null;S.timerElapsed=0;save();renderMain();
+}
+
+// ===== ALARMS =====
+function renderAlarms(){
+  let html=`<div style="margin-bottom:16px">
+    <div style="font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:2px">🔔 Study Alarms</div>
+    <div style="color:var(--muted);font-size:.77rem">Set daily study reminders & notifications</div>
+  </div>
+  <div class="ctrl">
+    <button class="btn btn-primary" onclick="openAddAlarmModal()">➕ Add Alarm</button>
+    <button class="btn" onclick="requestNotifPermission()">🔔 Enable Notifications</button>
+  </div>`;
+  if(S.alarms.length===0){
+    html+=`<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:40px;text-align:center;color:var(--muted)">No alarms set. Add your study schedule! ⏰</div>`;
+  } else {
+    S.alarms.forEach((alarm,i)=>{
+      html+=`<div class="alarm-card">
+        <div class="alarm-time">${alarm.time}</div>
+        <div class="alarm-info">
+          <div class="alarm-name">${alarm.name}</div>
+          <div class="alarm-sub">${alarm.days||'Daily'} · ${alarm.subject||'General Study'}</div>
+        </div>
+        <button class="alarm-tog ${alarm.on?'on':'off'}" onclick="toggleAlarm(${i})"></button>
+        <button class="ib del" onclick="deleteAlarm(${i})">🗑</button>
+      </div>`;
+    });
+  }
+  html+=`<div style="background:var(--surface);border:1px solid rgba(247,201,72,.3);border-radius:10px;padding:14px;margin-top:14px">
+    <div style="font-weight:700;font-size:.82rem;color:var(--accent);margin-bottom:8px">⚠️ Note on Notifications</div>
+    <div style="font-size:.75rem;color:var(--muted)">Browser notifications require permission. Click "Enable Notifications" above. For mobile, use browser shortcuts. Daily vocabulary quiz alarms also ring here.</div>
+  </div>`;
+  return html;
+}
+
+window.toggleAlarm=function(i){S.alarms[i].on=!S.alarms[i].on;save();renderMain();}
+window.deleteAlarm=function(i){if(!confirm('Delete alarm?'))return;S.alarms.splice(i,1);save();renderMain();}
+
+function requestNotifPermission(){
+  if('Notification' in window){
+    Notification.requestPermission().then(p=>{
+      if(p==='granted'){toast('✅ Notifications enabled!');}
+      else{toast('⚠️ Permission denied','var(--red)');}
+    });
+  } else {toast('⚠️ Browser doesn\'t support notifications','var(--red)');}
+}
+
+// Check alarms every minute
+
+setInterval(()=>{
+  if(!('Notification' in window)||Notification.permission!=='granted')return;
+  const now=new Date();
+  const nowTime=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  S.alarms.forEach(alarm=>{
+    if(alarm.on&&alarm.time===nowTime){
+      new Notification('SSC CGL Study Alarm 🔔',{body:`${alarm.name} — Time to study ${alarm.subject||''}!`,icon:''});
+    }
+  });
+  // Vocab reminder at 8am
+  if(nowTime==='08:00'&&S.vocab.length>0){
+    new Notification('📝 Vocabulary Time!',{body:`You have ${S.vocab.length} words to review today!`});
+  }
+},60000);
+
+// ===== MODALS =====
+function openModal(html){document.getElementById('modal-inner').innerHTML=html;document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+
+function openAddTopicModal(secId){
+  openModal(`<h3>➕ Add New Topic to ${secId.toUpperCase()}</h3>
+    <label>Topic Name</label><input id="nt-name" placeholder="e.g. Advanced Grammar">
+    <label>Importance</label><select id="nt-imp"><option>High</option><option>Medium</option><option>Low</option></select>
+    <label>PYQ Questions (approx.)</label><input id="nt-qs" type="number" placeholder="0">
+    <label>Color</label><input id="nt-color" type="color" value="#58a6ff">
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="addTopic('${secId}')">Add Topic</button></div>`);
+}
+
+window.addTopic=function(secId){
+  const name=document.getElementById('nt-name').value.trim();if(!name)return;
+  const id='ct_'+Date.now();
+  S.customTopics.push({id,subjectId:secId,name,importance:document.getElementById('nt-imp').value,qs:parseInt(document.getElementById('nt-qs').value)||0,color:document.getElementById('nt-color').value,isCustom:true,subtopics:[]});
+  save();closeModal();renderAll();toast('✅ Topic added!');
+}
+
+function openAddSubtopicModal(topicId,secId){
+  openModal(`<h3>➕ Add Subtopic</h3>
+    <label>Subtopic Name</label><input id="ns-name" placeholder="e.g. Tense Agreement Rules">
+    <div style="display:flex;gap:12px;margin-top:8px">
+      <label style="display:flex;align-items:center;gap:4px;font-size:.82rem;color:var(--text)"><input type="checkbox" id="tag-fire"> 🔥 Fire</label>
+      <label style="display:flex;align-items:center;gap:4px;font-size:.82rem;color:var(--text)"><input type="checkbox" id="tag-star"> ⭐ Star</label>
+    </div>
+    <label>PYQ Questions</label><input id="ns-qs" type="number" placeholder="0">
+    <label>Link (YouTube/PDF/Notes)</label><input id="ns-link" placeholder="https://...">
+    <label>Note</label><textarea id="ns-note" rows="2" placeholder="Personal notes..."></textarea>
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="addSubtopic('${topicId}','${secId}')">Add</button></div>`);
+}
+
+window.addSubtopic=function(topicId,secId){
+  const name=document.getElementById('ns-name').value.trim();if(!name)return;
+  const id='cs_'+Date.now();
+  const tags=[];
+  if(document.getElementById('tag-fire').checked)tags.push('fire');
+  if(document.getElementById('tag-star').checked)tags.push('star');
+  const link=document.getElementById('ns-link').value.trim();
+  const note=document.getElementById('ns-note').value.trim();
+  S.customSubtopics.push({id,topicId,subjectId:secId,name,tags,qs:parseInt(document.getElementById('ns-qs').value)||0});
+  if(link)S.links[id]=link;if(note)S.notes[id]=note;
+  save();closeModal();renderMain();toast('✅ Subtopic added!');
+}
+
+function openLinkModal(id,name){
+  openModal(`<h3>🔗 Link & Notes</h3>
+    <div style="color:var(--muted);font-size:.78rem;margin-bottom:12px">${name}</div>
+    <label>YouTube / PDF / Website URL</label><input id="li-link" placeholder="https://..." value="${S.links[id]||''}">
+    <label>Personal Notes</label><textarea id="li-note" rows="3" placeholder="Your notes...">${S.notes[id]||''}</textarea>
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveLink('${id}')">Save</button></div>`);
+}
+
+window.saveLink=function(id){
+  S.links[id]=document.getElementById('li-link').value.trim();
+  S.notes[id]=document.getElementById('li-note').value.trim();
+  save();closeModal();renderMain();toast('✅ Saved!');
+}
+
+function openAddSubjectModal(){
+  openModal(`<h3>➕ Add Custom Subject</h3>
+    <label>Subject Name</label><input id="cs-name" placeholder="e.g. Computer Awareness">
+    <label>Icon (emoji)</label><input id="cs-icon" placeholder="💻" maxlength="4">
+    <label>Color</label><input id="cs-color" type="color" value="#3dba6f">
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="addCustomSubject()">Add Subject</button></div>`);
+}
+
+window.addCustomSubject=function(){
+  const name=document.getElementById('cs-name').value.trim();if(!name)return;
+  const id='subj_'+Date.now();
+  S.customSubjects.push({id,label:name,icon:document.getElementById('cs-icon').value||'📌',color:document.getElementById('cs-color').value});
+  save();closeModal();renderAll();toast('✅ Subject added!');
+}
+
+window.confirmDeleteSubject=function(id,name){
+  openModal(`<h3>🗑️ Delete Subject</h3>
+    <div style="background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.3);border-radius:10px;padding:16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:1.5rem;margin-bottom:6px">⚠️</div>
+      <div style="font-weight:700;font-size:1rem;color:var(--red)">${name}</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:6px">This will permanently delete this subject and all its custom topics and subtopics.</div>
+    </div>
+    <div class="mda">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-red" onclick="deleteCustomSubject('${id}')">🗑 Yes, Delete</button>
+    </div>`);
+}
+window.deleteCustomSubject=function(id){
+  S.customSubjects=S.customSubjects.filter(s=>s.id!==id);
+  S.customTopics=S.customTopics.filter(t=>t.subjectId!==id);
+  S.customSubtopics=S.customSubtopics.filter(s=>s.subjectId!==id);
+  save();if(S.activeSection===id)S.activeSection='dashboard';closeModal();renderAll();toast('🗑️ Subject deleted','var(--red)');
+}
+
+window.deleteCustomTopic=function(id,secId){
+  if(!confirm('Delete this topic?'))return;
+  S.customTopics=S.customTopics.filter(t=>t.id!==id);
+  S.customSubtopics=S.customSubtopics.filter(s=>s.topicId!==id);
+  save();renderAll();toast('🗑️ Topic deleted','var(--red)');
+}
+
+window.deleteSubtopicEntry=function(id,isCustom){
+  if(isCustom){
+    if(!confirm('Delete this custom subtopic?'))return;
+    S.customSubtopics=S.customSubtopics.filter(s=>s.id!==id);
+    save();renderMain();toast('🗑️ Subtopic deleted','var(--red)');
+  } else {
+    // For built-in subtopics, just mark as hidden
+    if(!confirm('Remove this from your view? (Built-in subtopics cannot be permanently deleted — they will be hidden instead)'))return;
+    if(!S.hiddenSubtopics)S.hiddenSubtopics=[];
+    if(!S.hiddenSubtopics.includes(id))S.hiddenSubtopics.push(id);
+    save();renderMain();toast('🗑️ Hidden from view','var(--orange)');
+  }
+}
+window.deleteCustomSubtopic=function(id){
+  if(!confirm('Delete this subtopic?'))return;
+  S.customSubtopics=S.customSubtopics.filter(s=>s.id!==id);
+  save();renderMain();toast('🗑️ Subtopic deleted','var(--red)');
+}
+
+// ===== VOCAB MODALS =====
+window.openAddVocabModal=function(){
+  openModal(`<h3>➕ Add Vocabulary Word</h3>
+    <label>Word</label><input id="vw-word" placeholder="Ephemeral">
+    <label>Part of Speech</label><select id="vw-pos"><option value="">Select</option><option>Noun</option><option>Verb</option><option>Adjective</option><option>Adverb</option><option>Phrase</option></select>
+    <label>Meaning / Definition</label><textarea id="vw-mean" rows="2" placeholder="Lasting for a very short time"></textarea>
+    <label>Example Sentence (optional)</label><input id="vw-ex" placeholder="The ephemeral beauty of cherry blossoms...">
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveVocab()">Add Word</button></div>`);
+}
+
+window.saveVocab=function(){
+  const word=document.getElementById('vw-word').value.trim();
+  const meaning=document.getElementById('vw-mean').value.trim();
+  if(!word||!meaning){toast('⚠️ Word and meaning required','var(--red)');return;}
+  S.vocab.push({word,meaning,pos:document.getElementById('vw-pos').value,example:document.getElementById('vw-ex').value.trim(),added:today()});
+  save();closeModal();renderMain();toast('✅ Word added!');
+}
+
+window.editVocab=function(i){
+  const v=S.vocab[i];
+  openModal(`<h3>✏️ Edit Word</h3>
+    <label>Word</label><input id="ev-word" value="${v.word}">
+    <label>Meaning</label><textarea id="ev-mean" rows="2">${v.meaning}</textarea>
+    <label>Example</label><input id="ev-ex" value="${v.example||''}">
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="updateVocab(${i})">Save</button></div>`);
+}
+
+window.updateVocab=function(i){
+  S.vocab[i].word=document.getElementById('ev-word').value.trim();
+  S.vocab[i].meaning=document.getElementById('ev-mean').value.trim();
+  S.vocab[i].example=document.getElementById('ev-ex').value.trim();
+  save();closeModal();renderMain();toast('✅ Updated!');
+}
+
+window.openImportVocabModal=function(){
+  openModal(`<h3>📄 Import Vocabulary</h3>
+    <div style="color:var(--muted);font-size:.77rem;margin-bottom:12px">Paste text below. Format: one word per line as <b>Word: Meaning</b> or just paste any text and we extract likely vocab words.</div>
+    <label>Paste Text / CSV / Word List</label>
+    <textarea id="imp-text" rows="8" placeholder="Ephemeral: lasting very short time&#10;Ubiquitous: present everywhere&#10;Sagacious: having good judgment&#10;&#10;OR paste raw text and click Import"></textarea>
+    <label>OR Upload File</label>
+    <input type="file" id="imp-file" accept=".txt,.csv,.pdf,.doc,.docx" onchange="readVocabFile(this)">
+    <div id="imp-preview" style="margin-top:8px;font-size:.75rem;color:var(--green)"></div>
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="importVocab()">Import Words</button></div>`);
+}
+
+window.readVocabFile=function(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    document.getElementById('imp-text').value=e.target.result;
+    document.getElementById('imp-preview').textContent=`File loaded: ${file.name}`;
+  };
+  reader.readAsText(file);
+}
+
+window.importVocab=function(){
+  const text=document.getElementById('imp-text').value.trim();
+  if(!text)return;
+  const lines=text.split('\n').filter(l=>l.trim());
+  let added=0;
+  lines.forEach(line=>{
+    line=line.trim();if(!line)return;
+    let word,meaning;
+    if(line.includes(':')){
+      const parts=line.split(':');word=parts[0].trim();meaning=parts.slice(1).join(':').trim();
+    } else if(line.includes('-')){
+      const parts=line.split('-');word=parts[0].trim();meaning=parts.slice(1).join('-').trim();
+    } else if(line.includes('\t')){
+      const parts=line.split('\t');word=parts[0].trim();meaning=parts[1]?.trim()||'';
+    } else {word=line;meaning='';}
+    if(word&&word.length<60){
+      if(!S.vocab.find(v=>v.word.toLowerCase()===word.toLowerCase())){
+        S.vocab.push({word,meaning:meaning||'(Add meaning)',pos:'',example:'',added:today()});
+        added++;
+      }
+    }
+  });
+  save();closeModal();renderMain();toast(`✅ ${added} words imported!`);
+}
+
+window.startVocabQuiz=function(){
+  if(S.vocab.length===0)return;
+  const unasked=S.vocab.filter(v=>v.lastAsked!==today());
+  const pool=unasked.length>0?unasked:S.vocab;
+  const v=pool[Math.floor(Math.random()*pool.length)];
+  const i=S.vocab.indexOf(v);
+  openModal(`<h3>🧠 Vocabulary Quiz</h3>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;margin-bottom:14px">
+      <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent)">${v.word}</div>
+      ${v.pos?`<div style="font-size:.72rem;color:var(--muted);margin-top:4px">${v.pos}</div>`:''}
+    </div>
+    <div id="quiz-reveal" style="display:none;background:var(--surface2);border-radius:10px;padding:14px;margin-bottom:14px">
+      <div style="font-weight:700;margin-bottom:4px">Meaning:</div>
+      <div>${v.meaning}</div>
+      ${v.example?`<div style="font-size:.75rem;color:var(--muted);font-style:italic;margin-top:6px">"${v.example}"</div>`:''}
+    </div>
+    <div class="mda">
+      <button class="btn" onclick="document.getElementById('quiz-reveal').style.display='block';this.style.display='none'">👁 Reveal Meaning</button>
+      <button class="btn btn-green" onclick="markVocabAsked(${i})">✅ Got it!</button>
+      <button class="btn" onclick="startVocabQuiz()">⏭ Next</button>
+      <button class="btn" onclick="closeModal()">Done</button>
+    </div>`);
+}
+
+window.markVocabAsked=function(i){S.vocab[i].lastAsked=today();save();startVocabQuiz();}
+
+// ===== ALARM MODAL =====
+window.openAlarmModal=function(){setSection('alarms');}
+window.openAddAlarmModal=function(){
+  openModal(`<h3>⏰ Add Study Alarm</h3>
+    <label>Time</label><input id="al-time" type="time" value="09:00">
+    <label>Label</label><input id="al-name" placeholder="Morning Study Session">
+    <label>Subject</label><select id="al-subj">
+      <option value="">All Subjects</option>
+      <option>English</option><option>Math</option><option>Reasoning</option>
+      <option>GK/GS</option><option>Vocabulary</option><option>Current Affairs</option>
+    </select>
+    <label>Repeat</label><select id="al-days">
+      <option>Daily</option><option>Weekdays</option><option>Weekends</option><option>Once</option>
+    </select>
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveAlarm()">Save Alarm</button></div>`);
+}
+
+window.saveAlarm=function(){
+  const time=document.getElementById('al-time').value;
+  const name=document.getElementById('al-name').value.trim()||'Study Time';
+  S.alarms.push({time,name,subject:document.getElementById('al-subj').value,days:document.getElementById('al-days').value,on:true});
+  save();closeModal();renderMain();toast('✅ Alarm set!');
+  requestNotifPermission();
+}
+
+// ===== LOG HOURS MODAL =====
+window.openLogHoursModal=function(){
+  openModal(`<h3>➕ Log Study Hours</h3>
+    <label>Date</label><input id="lh-date" type="date" value="${today()}">
+    <label>Hours Studied</label><input id="lh-hrs" type="number" step="0.5" min="0" max="24" placeholder="2.5">
+    <div class="mda"><button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="logHours()">Save</button></div>`);
+}
+
+window.logHours=function(){
+  const date=document.getElementById('lh-date').value;
+  const hrs=parseFloat(document.getElementById('lh-hrs').value)||0;
+  if(!S.studyHours[date])S.studyHours[date]=0;
+  S.studyHours[date]+=hrs;
+  save();closeModal();renderMain();toast(`✅ ${hrs}h logged!`);
+}
+
+// ===================================================================
+// ===== GOOGLE DRIVE SYNC ENGINE ====================================
+// ===================================================================
+// Uses Google Drive AppData folder (hidden, user-owned, no extra perms)
+// File stored: SSC_CGL_Tracker_Data.json in appDataFolder
+// Flow: Sign in → get token → read file → merge → write file
+// Auto-sync every 60s when signed in
+// ===================================================================
+
+const GAPI_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // ← Replace with your Client ID
+const GAPI_SCOPE     = 'https://www.googleapis.com/auth/drive.appdata';
+const DRIVE_FILE_NAME= 'SSC_CGL_Tracker_Data.json';
+
+let gToken = null;       // current access token
+let gFileId = null;      // Drive file ID once found/created
+let syncInterval = null;
+let lastSyncTime = null;
+let syncPending   = false;
+
+// ── Token management ────────────────────────────────────────────────
+function getStoredToken(){
+  try{
+    const t=localStorage.getItem('ssc_gtoken');
+    if(!t)return null;
+    const obj=JSON.parse(t);
+    if(Date.now() > obj.expires) {localStorage.removeItem('ssc_gtoken');return null;}
+    return obj;
+  }catch(e){return null;}
+}
+function storeToken(tokenObj){
+  const obj={...tokenObj, expires: Date.now() + (tokenObj.expires_in||3600)*1000 - 60000};
+  localStorage.setItem('ssc_gtoken', JSON.stringify(obj));
+  gToken = obj.access_token;
+}
+function clearToken(){localStorage.removeItem('ssc_gtoken');gToken=null;gFileId=null;}
+
+// ── Sync status UI ──────────────────────────────────────────────────
+function setSyncStatus(status, label){
+  const dot=document.getElementById('sync-dot');
+  const lbl=document.getElementById('user-label');
+  const lbl2=document.getElementById('user-label2');
+  const bar=document.getElementById('sync-bar');
+  const colors={syncing:'#f7c948',ok:'#3fb950',error:'#f85149',off:'#7d8590'};
+  if(dot) dot.style.background=colors[status]||colors.off;
+  if(lbl) lbl.textContent=label;
+  if(lbl2) lbl2.textContent=S.user? S.user.name.split(' ')[0] : 'Login';
+  if(bar){
+    bar.className='sync-bar'+(status==='syncing'?' syncing':status==='ok'?' done':'');
+    if(status==='ok') setTimeout(()=>{if(bar)bar.className='sync-bar';},1500);
+  }
+}
+
+// ── Google Sign-In (GIS) ────────────────────────────────────────────
+function initGoogleAuth(){
+  if(typeof google==='undefined'||!google.accounts){
+    setTimeout(initGoogleAuth,500);return;
+  }
+  // Restore existing token
+  const stored=getStoredToken();
+  if(stored){gToken=stored.access_token;onSignedIn();}
+}
+
+function googleSignIn(){
+  if(typeof google==='undefined'||!google.accounts){
+    toast('⚠️ Google API not loaded. Check internet.','var(--red)');return;
+  }
+  const client=google.accounts.oauth2.initTokenClient({
+    client_id: GAPI_CLIENT_ID,
+    scope: GAPI_SCOPE,
+    callback:(tokenResponse)=>{
+      if(tokenResponse.error){
+        toast('❌ Sign-in failed: '+tokenResponse.error,'var(--red)');return;
+      }
+      storeToken(tokenResponse);
+      // Get user info
+      fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
+        headers:{Authorization:'Bearer '+gToken}
+      }).then(r=>r.json()).then(info=>{
+        S.user={name:info.name||info.email,email:info.email,picture:info.picture};
+        save();
+        onSignedIn();
+        closeModal();
+        toast('✅ Signed in as '+S.user.name);
+      }).catch(()=>{
+        S.user={name:'Google User',email:'unknown'};save();
+        onSignedIn();closeModal();toast('✅ Signed in!');
+      });
+    }
+  });
+  client.requestAccessToken();
+}
+
+function onSignedIn(){
+  setSyncStatus('syncing','Syncing…');
+  startAutoSync();
+  syncNow(true); // initial sync: pull then push
+}
+
+// ── Drive API helpers ────────────────────────────────────────────────
+async function driveRequest(url, method='GET', body=null, contentType='application/json'){
+  const opts={method, headers:{Authorization:'Bearer '+gToken}};
+  if(body!==null){opts.headers['Content-Type']=contentType;opts.body=body;}
+  const res=await fetch(url,opts);
+  if(res.status===401){clearToken();setSyncStatus('error','Token expired — Re-sign in');return null;}
+  return res;
+}
+
+async function findOrCreateFile(){
+  if(gFileId)return gFileId;
+  // Search in appDataFolder
+  const search=await driveRequest(
+    `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&q=name%3D%22${DRIVE_FILE_NAME}%22&fields=files(id,name,modifiedTime)`
+  );
+  if(!search)return null;
+  const data=await search.json();
+  if(data.files&&data.files.length>0){
+    gFileId=data.files[0].id;
+    return gFileId;
+  }
+  // Create new file
+  const meta=JSON.stringify({name:DRIVE_FILE_NAME,parents:['appDataFolder']});
+  const blob=new Blob([JSON.stringify({})],{type:'application/json'});
+  const form=new FormData();
+  form.append('metadata',new Blob([meta],{type:'application/json'}));
+  form.append('file',blob);
+  const create=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id',{
+    method:'POST',headers:{Authorization:'Bearer '+gToken},body:form
+  });
+  if(!create)return null;
+  const created=await create.json();
+  gFileId=created.id;
+  return gFileId;
+}
+
+async function pullFromDrive(){
+  const fileId=await findOrCreateFile();
+  if(!fileId)return null;
+  const res=await driveRequest(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`);
+  if(!res||!res.ok)return null;
+  try{return await res.json();}catch(e){return null;}
+}
+
+async function pushToDrive(data){
+  const fileId=await findOrCreateFile();
+  if(!fileId)return false;
+  const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+  const res=await fetch(`https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`,{
+    method:'PATCH',
+    headers:{Authorization:'Bearer '+gToken,'Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  });
+  return res&&res.ok;
+}
+
+// ── Merge logic: newest wins, arrays union ──────────────────────────
+function mergeData(local, remote){
+  if(!remote||typeof remote!=='object')return local;
+  const merged={...local};
+  // completed: keep done=true if either has it
+  merged.completed={...remote.completed,...local.completed};
+  Object.keys(remote.completed||{}).forEach(k=>{
+    if(remote.completed[k]?.done&&!local.completed?.[k]?.done)
+      merged.completed[k]=remote.completed[k];
+  });
+  // vocab: union by word
+  const vocabMap={};
+  [...(remote.vocab||[]),...(local.vocab||[])].forEach(v=>{
+    vocabMap[v.word.toLowerCase()]=v;
+  });
+  merged.vocab=Object.values(vocabMap);
+  // highlighted, links, notes: merge objects
+  merged.highlighted={...(remote.highlighted||{}),...local.highlighted};
+  merged.links={...(remote.links||{}),...local.links};
+  merged.notes={...(remote.notes||{}),...local.notes};
+  // dailyLog: union arrays per day
+  merged.dailyLog={...(remote.dailyLog||{})};
+  Object.keys(local.dailyLog||{}).forEach(d=>{
+    const rem=remote.dailyLog?.[d]||[];
+    const loc=local.dailyLog[d]||[];
+    merged.dailyLog[d]=[...new Set([...rem,...loc])];
+  });
+  // studyHours: keep max per day
+  merged.studyHours={...(remote.studyHours||{})};
+  Object.keys(local.studyHours||{}).forEach(d=>{
+    merged.studyHours[d]=Math.max(local.studyHours[d]||0,remote.studyHours?.[d]||0);
+  });
+  // customSubjects, customTopics, customSubtopics: union by id
+  ['customSubjects','customTopics','customSubtopics','alarms'].forEach(key=>{
+    const map={};
+    [...(remote[key]||[]),...(local[key]||[])].forEach(item=>{if(item.id)map[item.id]=item;});
+    merged[key]=Object.values(map);
+  });
+  // hiddenSubtopics: union
+  merged.hiddenSubtopics=[...new Set([...(remote.hiddenSubtopics||[]),...(local.hiddenSubtopics||[])])];
+  // user: keep local if set
+  merged.user=local.user||remote.user||null;
+  return merged;
+}
+
+// ── Main sync function ───────────────────────────────────────────────
+async function syncNow(isInitial=false){
+  if(!gToken){setSyncStatus('off','Not synced');return;}
+  setSyncStatus('syncing','Syncing…');
+  try{
+    // 1. Pull remote
+    const remote=await pullFromDrive();
+    // 2. Merge
+    const merged=mergeData(S, remote||{});
+    Object.assign(S,merged);
+    save();
+    // 3. Push merged back
+    await pushToDrive(S);
+    lastSyncTime=new Date();
+    const t=lastSyncTime.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    setSyncStatus('ok',`Synced ${t}`);
+    if(isInitial)renderAll();
+    else updateHeader();
+  }catch(err){
+    setSyncStatus('error','Sync failed');
+    console.error('Sync error',err);
+  }
+}
+
+function startAutoSync(){
+  if(syncInterval)clearInterval(syncInterval);
+  syncInterval=setInterval(()=>syncNow(),60000); // every 60s
+}
+
+// ── Hook save() to trigger sync ─────────────────────────────────────
+const _origSave=save;
+window._syncTimeout=null;
+save=function(){
+  _origSave();
+  if(gToken){
+    clearTimeout(window._syncTimeout);
+    window._syncTimeout=setTimeout(()=>syncNow(),3000); // debounce 3s after save
+  }
+};
+
+// ── Login Modal UI ───────────────────────────────────────────────────
+window.openLoginModal=function(){
+  if(S.user&&gToken){
+    openModal(`<h3>👤 Google Account</h3>
+      <div style="background:var(--surface2);border-radius:10px;padding:16px;margin-bottom:14px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:6px">${S.user.picture?`<img src="${S.user.picture}" style="width:52px;height:52px;border-radius:50%">`:' 👤'}</div>
+        <div style="font-weight:700;font-size:1.05rem">${S.user.name}</div>
+        <div style="color:var(--muted);font-size:.78rem">${S.user.email}</div>
+        <div style="color:var(--green);font-size:.72rem;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:4px">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block"></span>
+          Synced with Google Drive${lastSyncTime?' · '+lastSyncTime.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}):''}
+        </div>
+      </div>
+      <div style="background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.3);border-radius:8px;padding:10px;font-size:.74rem;color:var(--muted);margin-bottom:14px">
+        ☁️ Your data is automatically synced to Google Drive every 60 seconds. Open this app on any device, sign in with the same Google account, and all your progress will appear.
+      </div>
+      <div class="mda">
+        <button class="btn btn-primary" onclick="syncNow();toast('🔄 Syncing…')">🔄 Sync Now</button>
+        <button class="btn" onclick="exportData()">📤 Export JSON</button>
+        <button class="btn" onclick="importData()">📥 Import JSON</button>
+        <button class="btn btn-red" onclick="googleSignOut()">Sign Out</button>
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>`);
+  } else if(S.user&&!gToken){
+    // user set but token expired
+    openModal(`<h3>👤 Re-connect Google</h3>
+      <div style="background:var(--surface2);border-radius:10px;padding:14px;margin-bottom:14px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:6px">⚠️</div>
+        <div style="font-weight:700">${S.user.name}</div>
+        <div style="color:var(--orange);font-size:.78rem">Session expired — please sign in again</div>
+      </div>
+      <div class="mda">
+        <button class="btn btn-primary" onclick="googleSignIn()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:16px;height:16px"> Sign in with Google</button>
+        <button class="btn btn-red" onclick="googleSignOut()">Sign Out</button>
+      </div>`);
+  } else {
+    openModal(`<h3>☁️ Sign In & Sync</h3>
+      <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px;line-height:1.6">
+        Sign in with Google to sync all your study data across devices. Works like an online spreadsheet — any phone, any browser, same data.
+      </div>
+      <div style="background:var(--surface2);border-radius:10px;padding:14px;margin-bottom:14px">
+        <div style="font-weight:700;font-size:.88rem;margin-bottom:10px;color:var(--accent)">How it works:</div>
+        <div style="font-size:.77rem;color:var(--muted);display:flex;flex-direction:column;gap:6px">
+          <div>✅ Sign in with Gmail on Phone 1</div>
+          <div>✅ Your data saves to <b>Google Drive</b> (hidden app folder)</div>
+          <div>✅ Open this app on Phone 2, sign in with same Gmail</div>
+          <div>✅ All completed topics, vocab, study hours — everything syncs</div>
+          <div>✅ Auto-syncs every 60 seconds</div>
+        </div>
+      </div>
+      <div id="gclient-config-warn" style="display:none;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.3);border-radius:8px;padding:10px;font-size:.74rem;color:var(--red);margin-bottom:12px">
+        ⚠️ Google Client ID not configured. See setup instructions below.
+      </div>
+      <button class="google-btn" onclick="handleGoogleSignIn()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:20px;height:20px">
+        Sign in with Google
+      </button>
+      <details style="margin-top:14px">
+        <summary style="cursor:pointer;font-size:.75rem;color:var(--muted);font-weight:700">⚙️ Setup Instructions (one-time)</summary>
+        <div style="background:var(--surface2);border-radius:8px;padding:12px;margin-top:8px;font-size:.72rem;color:var(--muted);line-height:1.8">
+          <b style="color:var(--accent)">To enable Google sync:</b><br>
+          1. Go to <a href="https://console.cloud.google.com" target="_blank" style="color:var(--blue)">console.cloud.google.com</a><br>
+          2. Create a project → Enable <b>Google Drive API</b><br>
+          3. OAuth consent screen → Add your Gmail as test user<br>
+          4. Credentials → Create OAuth 2.0 Client ID (Web App)<br>
+          5. Add your app URL to Authorised JS origins<br>
+          6. Copy Client ID → replace <code>YOUR_GOOGLE_CLIENT_ID</code> in this file<br><br>
+          <b>OR use Export/Import</b> as a manual sync alternative below.
+        </div>
+      </details>
+      <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px">
+        <div style="font-size:.73rem;color:var(--muted);margin-bottom:8px;font-weight:700">Manual alternative:</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" onclick="exportData()">📤 Export Data</button>
+          <button class="btn" onclick="importData()">📥 Import Data</button>
+        </div>
+      </div>`);
+    // Show warning if client ID not set
+    if(GAPI_CLIENT_ID==='YOUR_GOOGLE_CLIENT_ID'){
+      setTimeout(()=>{const w=document.getElementById('gclient-config-warn');if(w)w.style.display='block';},100);
+    }
+  }
+}
+
+function handleGoogleSignIn(){
+  if(GAPI_CLIENT_ID==='YOUR_GOOGLE_CLIENT_ID'){
+    toast('⚠️ Set your Google Client ID first!','var(--orange)');
+    return;
+  }
+  googleSignIn();
+}
+
+window.login=function(){
+  // legacy local login (fallback)
+  const name=document.getElementById('li-name')?.value.trim();
+  const email=document.getElementById('li-email')?.value.trim();
+  if(!name){toast('⚠️ Enter your name','var(--red)');return;}
+  S.user={name,email};save();closeModal();updateHeader();toast(`✅ Welcome, ${name}!`);
+}
+
+window.googleSignOut=function(){
+  clearToken();S.user=null;
+  if(syncInterval)clearInterval(syncInterval);
+  save();closeModal();setSyncStatus('off','Not synced');updateHeader();
+  toast('Signed out','var(--orange)');
+}
+window.logout=window.googleSignOut;
+
+window.exportData=function(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`ssc_cgl_backup_${today()}.json`;a.click();
+  toast('✅ Data exported!');
+}
+
+window.importData=function(){
+  const input=document.createElement('input');input.type='file';input.accept='.json';
+  input.onchange=e=>{
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const remote=JSON.parse(ev.target.result);
+        const merged=mergeData(S,remote);
+        Object.assign(S,merged);save();closeModal();renderAll();
+        toast('✅ Data imported & merged!');
+      }catch(err){toast('⚠️ Invalid file','var(--red)');}
+    };reader.readAsText(file);
+  };input.click();
+}
+
+// updateHeader also shows sync user
+const _origUpdateHeader=updateHeader;
+updateHeader=function(){
+  _origUpdateHeader();
+  const lbl2=document.getElementById('user-label2');
+  if(lbl2)lbl2.textContent=S.user?S.user.name.split(' ')[0]:'Login';
+};
+
+// init on page load
+setTimeout(initGoogleAuth, 800);
+
+// ===== DELETE HISTORY =====
+window.confirmDeleteHistory=function(){
+  openModal(`<h3>🗑️ Delete / Manage History</h3>
+    <div style="color:var(--muted);font-size:.78rem;margin-bottom:14px">Choose what to delete. This cannot be undone!</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="background:var(--surface2);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem">📅 Daily Logs</div><div style="font-size:.7rem;color:var(--muted)">${Object.keys(S.dailyLog).length} days logged</div></div>
+        <button class="btn btn-red btn-sm" onclick="deleteHistory('daily')">🗑 Delete</button>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem">✅ Completed Marks</div><div style="font-size:.7rem;color:var(--muted)">${Object.keys(S.completed).filter(k=>S.completed[k]?.done).length} items marked done</div></div>
+        <button class="btn btn-red btn-sm" onclick="deleteHistory('completed')">🗑 Delete</button>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem">⏱️ Study Hours</div><div style="font-size:.7rem;color:var(--muted)">${Object.keys(S.studyHours).length} days recorded</div></div>
+        <button class="btn btn-red btn-sm" onclick="deleteHistory('hours')">🗑 Delete</button>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem">📝 Vocabulary</div><div style="font-size:.7rem;color:var(--muted)">${S.vocab.length} words saved</div></div>
+        <button class="btn btn-red btn-sm" onclick="deleteHistory('vocab')">🗑 Delete</button>
+      </div>
+      <div style="background:var(--surface2);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem">👁 Hidden Subtopics</div><div style="font-size:.7rem;color:var(--muted)">${(S.hiddenSubtopics||[]).length} hidden</div></div>
+        <button class="btn btn-sm" onclick="deleteHistory('hidden')">↩ Restore</button>
+      </div>
+      <div style="background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.3);border-radius:8px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><div style="font-weight:700;font-size:.83rem;color:var(--red)">⚠️ Reset Everything</div><div style="font-size:.7rem;color:var(--muted)">Delete all data, custom subjects, topics</div></div>
+        <button class="btn btn-red btn-sm" onclick="deleteHistory('all')">🗑 RESET</button>
+      </div>
+    </div>
+    <div class="mda">
+      <button class="btn btn-primary" onclick="closeModal()">Close</button>
+    </div>`);
+}
+
+window.deleteHistory=function(type){
+  if(type==='hidden'){S.hiddenSubtopics=[];save();closeModal();renderAll();toast('↩️ Restored hidden subtopics','var(--green)');return;}
+  if(!confirm('Are you sure? This cannot be undone!'))return;
+  if(type==='daily'){S.dailyLog={};}
+  else if(type==='completed'){S.completed={};}
+  else if(type==='hours'){S.studyHours={};}
+  else if(type==='vocab'){S.vocab=[];}
+  else if(type==='all'){
+    S.completed={};S.dailyLog={};S.studyHours={};S.vocab=[];S.highlighted={};S.links={};S.notes={};
+    S.customSubtopics=[];S.customTopics=[];S.customSubjects=[];S.alarms=[];S.hiddenSubtopics=[];
+  }
+  save();closeModal();renderAll();toast('🗑️ Deleted','var(--red)');
+}
+
+// Inject custom topics into SUBJECTS
+function getTopicsForSection(secId){
+  const builtins=SUBJECTS[secId]||[];
+  const custom=S.customTopics.filter(t=>t.subjectId===secId).map(t=>({
+    ...t,subtopics:[],isCustom:true
+  }));
+  return [...builtins,...custom];
+}
+
+// ===== INIT =====
+renderAll();
+</script>
+</body>
+</html>
